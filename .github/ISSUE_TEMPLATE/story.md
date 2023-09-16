@@ -2,7 +2,7 @@
 name: Story
 about: 'An independent fragment of and epic '
 title: "[STORY]"
-labels: ''
+labels: User Stories
 assignees: ''
 
 ---
