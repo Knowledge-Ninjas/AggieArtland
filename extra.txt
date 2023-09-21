@@ -1,0 +1,1 @@
+rails generate model art_piece name:string description:text longitute:decimal latitude:decimal 
