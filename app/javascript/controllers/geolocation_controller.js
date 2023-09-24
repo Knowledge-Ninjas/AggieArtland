@@ -18,7 +18,10 @@ export default class extends Controller {
     const crd = pos.coords;
     // redirect with coordinates in params
     // location.assign(`/locations/?place=${crd.latitude},${crd.longitude}`)
-    document.getElementById("p1").innerHTML = crd.latitude
+    document.getElementById("lat").innerHTML = crd.latitude
+    document.getElementById("long").innerHTML = crd.longitude
+    document.getElementById("acc").innerHTML = crd.accuracy
+
     console.log("Your current position is:");
     console.log(`Latitude : ${crd.latitude}`);
     console.log(`Longitude: ${crd.longitude}`);
