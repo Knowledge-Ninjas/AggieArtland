@@ -73,7 +73,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '~> 0.11' # for Heroku deployment
+  gem 'pg' # for Heroku deployment
 end
 
 gem "geocoder", "~> 1.8"
