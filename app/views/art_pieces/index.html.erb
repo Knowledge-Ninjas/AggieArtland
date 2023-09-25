@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Art pieces</h1>
+<div data-controller="geolocation">
+  <button data-action="geolocation#search">Find me</button>
+</div>
+
+
 
 <div id="art_pieces">
   <% @art_pieces.each do |art_piece| %>
