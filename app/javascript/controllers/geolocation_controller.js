@@ -9,6 +9,7 @@ const options = {
 // Connects to data-controller="geolocation"
 export default class extends Controller {
   connect() {
+    this.search()
   }
 
   success(pos) {
@@ -26,6 +27,9 @@ export default class extends Controller {
   }
 
   search () {
-    navigator.geolocation.getCurrentPosition(this.success, this.error, options);
+    setInterval(() => {
+      navigator.geolocation.getCurrentPosition(this.success, this.error, options);
+    },1000)
+    
   }
 }
