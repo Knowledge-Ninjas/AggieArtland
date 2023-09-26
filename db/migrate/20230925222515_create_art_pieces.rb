@@ -3,10 +3,9 @@ class CreateArtPieces < ActiveRecord::Migration[7.0]
     create_table :art_pieces do |t|
       t.string :name
       t.text :description 
-      t.string :address
+      t.string :address      
       t.float :latitude
       t.float :longitude
-      t.string :artist
 
       t.timestamps
     end

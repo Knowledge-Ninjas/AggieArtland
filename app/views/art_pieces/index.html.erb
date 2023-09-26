@@ -1,9 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
 <h1> Your Location </h1>
-<div data-controller="geolocation">
-  <button data-action="geolocation#search">Find me</button>
-</div>
 
 <p>Your Latitude   : <span id = "lat"> 0 </span> </p>
 <p>Your Longitude  : <span id = "long"> 0 </span> </p>
@@ -18,6 +15,7 @@
     </p>
   <% end %>
 </div>
+<br>
 
 <%= link_to "New art piece", new_art_piece_path %>
 
