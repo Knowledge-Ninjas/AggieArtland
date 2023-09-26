@@ -1,9 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
+<h1> Your Location </h1>
 <div data-controller="geolocation">
   <button data-action="geolocation#search">Find me</button>
 </div>
 
+<p>Your Latitude : <span id = "lat"> 0 </span> </p>
+<p>Your Longitude : <span id = "long"> 0 </span> </p>
+<p>Accuracy in 'm' : <span id = "acc"> 0 </span> </p>
+
+<h1> Admin page - List of Art Pieces</h1>
 <div id="art_pieces">
   <% @art_pieces.each do |art_piece| %>
     <%= render art_piece %>

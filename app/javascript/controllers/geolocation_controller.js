@@ -15,6 +15,10 @@ export default class extends Controller {
   success(pos) {
     const crd = pos.coords;
 
+    document.getElementById("lat").innerHTML = crd.latitude
+    document.getElementById("long").innerHTML = crd.longitude
+    document.getElementById("acc").innerHTML = crd.accuracy
+
     console.log('Your current position is:');
     console.log(`Latitude : ${crd.latitude}`);
     console.log(`Longitude: ${crd.longitude}`);
@@ -30,6 +34,5 @@ export default class extends Controller {
     setInterval(() => {
       navigator.geolocation.getCurrentPosition(this.success, this.error, options);
     },1000)
-    
   }
 }
