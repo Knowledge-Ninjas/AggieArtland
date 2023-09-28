@@ -23,9 +23,18 @@ When('I press {string}') do |button|
 end
 
 Then('I should be on the user page') do
-    visit user_path
+    visit "/users/1"
 end
 
 Then('I should see {string}') do |text|
-    page.should have_content(text)
+    expect(page).to have_content(text)
+end
+
+Given('I have signed up with email {string}, name {string}, and password {string}') do |email, name, pwd|
+    step %{I am on the sign up page}
+    step %{I fill in "Email" with "#{email}"}
+    step %{I fill in "Name" with "#{name}"}
+    step %{I fill in "Password" with "#{pwd}"}
+    step %{I fill in "Password confirmation" with "#{pwd}"}
+    step %{I press "Sign Up"}
 end
