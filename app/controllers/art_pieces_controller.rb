@@ -8,7 +8,6 @@ class ArtPiecesController < ApplicationController
 
   # GET /art_pieces/1 or /art_pieces/1.json
   def show
-    @art_piece = ArtPiece.find(params[:id])
   end
 
   # GET /art_pieces/new
