@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root 'session#home'
   resources :users
   resources :art_pieces
 
