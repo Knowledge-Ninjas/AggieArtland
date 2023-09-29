@@ -55,7 +55,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'cucumber'
 end
 
 group :development do
@@ -75,6 +74,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "rails-controller-testing"
+  gem 'cucumber-rails', require: false
+  gem 'simplecov', require: false
+  gem 'database_cleaner'
 end
 
 group :production do

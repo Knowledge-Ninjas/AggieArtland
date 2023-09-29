@@ -30,4 +30,4 @@ Feature: Admin Page
   Scenario: Show location
     Given I am on the Index page
     When I click on show location
-    Then I should be able to see all the details of a ceratin art piece
+    Then I should be able to see all the details of a certain art piece
