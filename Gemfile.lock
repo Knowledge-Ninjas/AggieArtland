@@ -298,6 +298,7 @@ GEM
 PLATFORMS
   x64-mingw-ucrt
   x86_64-darwin-21
+  x86_64-darwin-22
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)

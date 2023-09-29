@@ -3,6 +3,14 @@ Feature: Authentication System
     So that I can access the resources of the website securely,
     I want to log into the website with my email and password.
 
+Background: users in database
+Given the following users exist:
+    | email             | password_digest | name  |
+    | abc@gmail.com     | abc123          | Abet  |
+    | xyz@gmail.com     | asj438f84       | Kayla |
+    | and123@yahoo.com  | password01      | Syd   |
+    | pete@gmail.com    | idk1234         | Pete  |
+
     Scenario: Navigate to Create Account
         Given I am on the login page
         When I click on the sign up button
@@ -19,6 +27,24 @@ Feature: Authentication System
         And I should see "Billy Bob"
         And I should see "billybob@gmail.com"
 
+    Scenario: Existing Account
+        Given I am on the sign up page
+        When I fill in "Email" with "pete@gmail.com"
+        And I fill in "Name" with "Pete"
+        And I fill in "Password" with "anything"
+        And I fill in "Password confirmation" with "anything"
+        And I press "Sign Up"
+        Then I should see a notice "account already exists"
+
+    Scenario: Passwords don't match
+        Given I am on the sign up page
+        When I fill in "Email" with "newguy@gmail.com"
+        And I fill in "Name" with "Newt"
+        And I fill in "Password" with "mypass12"
+        And I fill in "Password confirmation" with "mypass21"
+        And I press "Sign Up"
+        Then I should see a notice "passwords do not match"
+
     Scenario: Log In
         Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
         And I am on the login page
@@ -28,3 +54,22 @@ Feature: Authentication System
         Then I should be on the user page
         And I should see "Billy Bob"
         And I should see "billybob@gmail.com"
+
+    Scenario: Incorrect password
+        Given I am on the login page
+        When I fill in "Email" with "abc@gmail.com"
+        And I fill in "Password" with "xyz1234"
+        And I press "Log in"
+        Then I should see a notice "incorrect password"
+
+    Scenario: User does not exist
+        Given I am on the login page
+        When I fill in "Email" with "abc@gmail.com"
+        And I fill in "Password" with "xyz1234"
+        And I press "Log in"
+        Then I should see a notice "user does not exist"
+
+    Scenario: Logout
+        Given I am on the user page
+        When I press "Log out"
+        Then I should see the login page
