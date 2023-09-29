@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
         if !!@user && @user.authenticate(params[:session][:password])
             session[:user_id] = @user.id
             puts "Inside If blocj"
-            redirect_to @user, notice: 'User successfully Logged in!'
+            redirect_to '/art_pieces', notice: 'User successfully Logged in!'
         else
             redirect_to login_path , notice: "Something Went Wrong!!"
         end

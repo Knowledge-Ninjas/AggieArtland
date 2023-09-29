@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :users
   resources :art_pieces
-
+  root :to => redirect('/login')
+  
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
