@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ArtPiecesController, type: :controller do
+  
   describe 'GET #index' do
     it 'assigns all art pieces to @art_pieces' do
       art_piece1 = FactoryBot.create(:art_piece)
@@ -101,6 +102,17 @@ RSpec.describe ArtPiecesController, type: :controller do
         expect(response).to redirect_to(art_piece_url(art_piece))
       end
     end
+
+    context "with invalid parameters" do
+      let(:invalid_params) { FactoryBot.attributes_for(:art_piece, name:nil) }
+      
+      it "does not update the requested art piece" do
+        patch :update, params: { id: art_piece.id, art_piece: invalid_params }
+        
+        art_piece.reload
+        expect(art_piece.name).not_to be_nil
+      end
+    end
   end
 
   describe 'DELETE #destroy' do
@@ -111,5 +123,5 @@ RSpec.describe ArtPiecesController, type: :controller do
         delete :destroy, params: { id: art_piece.id }
       }.to change(ArtPiece, :count).by(-1)
     end
-end
+  end
 end
