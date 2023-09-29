@@ -1,0 +1,14 @@
+<!-- sessions/login.html.erb -->
+<%= form_for(:session, url: login_path) do |f| %>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, name: 'session[email]' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password, name: 'session[password]' %>
+  </div>
+
+  <%= f.submit 'Log in' %>
+<% end %>
