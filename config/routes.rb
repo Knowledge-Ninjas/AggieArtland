@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :users
+  resources :art_pieces
 
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'

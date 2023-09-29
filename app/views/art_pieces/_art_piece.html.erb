@@ -1,0 +1,50 @@
+<style>
+  .image {
+    float: left;
+    padding-right: 20px;
+  }
+  .heading {
+    font-size: 30px;
+    font-style: bold;
+  }
+</style>
+
+<div id="<%= dom_id art_piece %>">
+  <div class = "heading">
+    <p>
+      <%= art_piece.name %>
+    </p>    
+  </div>
+  <div class = "image">
+    <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/pin-s+ff0000(#{art_piece.longitude},#{art_piece.latitude})/#{art_piece.longitude},#{art_piece.latitude},12,0/300x200?access_token=pk.eyJ1IjoiYXNod2lucmFqYTk0MSIsImEiOiJjbG10YWRidWswMms3Mm1vNTMzMHRsbzVsIn0.MnG54GXT7gRMTYIr2hfogA"%>
+  </div>
+  <div>
+    <p>
+      <strong>Description:</strong>
+      <%= art_piece.description %>
+    </p>
+
+    <p>
+      <strong>Address:</strong>
+      <%= art_piece.address %>
+    </p>
+
+    <p>
+      <strong>Artist:</strong>
+      <%= art_piece.artist %>
+    </p>
+
+    <p>
+      <strong>Latitude:</strong>
+      <%= art_piece.latitude %>
+    </p>
+
+    <p>
+      <strong>Longitude:</strong>
+      <%= art_piece.longitude %>
+    </p>
+
+  </div>
+
+
+</div>
