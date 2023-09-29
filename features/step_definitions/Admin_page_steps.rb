@@ -10,13 +10,14 @@ Then('I should be able to view all the details of the current art pieces') do
   # Write code here to verify that all art pieces' details are visible
   expect(page).to have_content('Art Piece Details')
 end
+
 Given('I am in the Index page') do
   # Write code here to navigate to the Index page
-  visit index_page_path
+  visit art_pieces_path
 end
-When('I click on the new Location button') do
+When('I click on the new art piece button') do
   # Write code here to click on the new Location button
-  click_button 'New Location'
+  click_link('New art piece') 
 end
 Then('I should be redirected to the page') do
   # Write code here to verify the redirection to the expected page
@@ -24,16 +25,16 @@ Then('I should be redirected to the page') do
 end
 Then('I should be able to input the details of the new Art Piece') do
   # Write code here to input the details of the new Art Piece
-  fill_in 'Location Name', with: 'New Location'
+  fill_in 'Name', with: 'New Location'
   fill_in 'Address', with: '123 Main St'
-  click_button 'Save'
+  click_button 'Create Art Piece'
 end
 Then('it should be updated in the database within {int} seconds') do |int|
   # Write code here to verify that the new Art Piece is updated in the database within the specified time
   sleep(int)
   expect(Location.find_by(name: 'New Location')).not_to be_nil
 end
-Given('I am in the show location page') do
+Given('I am in the show this art piece page') do
   # Write code here to navigate to the show location page
   visit location_page_path(location_id)
 end
@@ -49,6 +50,7 @@ Then('I should be able to change any aspect of the Art Piece') do
   # Write code here to change any aspect of the Art Piece
   fill_in 'Location Name', with: 'Updated Location'
   click_button 'Save'
+
 end
 Given('I am on the show location page') do
   # Write code here to navigate to the show location page

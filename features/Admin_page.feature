@@ -10,7 +10,7 @@ Feature: Admin Page
 
   Scenario: Create a New Art Piece
     Given I am in the Index page 
-    When I click on the new Location button
+    When I click on the new art piece button
     Then I should be redirected to the page
     And I should to be able to input the details of the new Art Piece
     And it should be updated in the database within 10 seconds
@@ -27,7 +27,7 @@ Feature: Admin Page
     When I click on the delete location button
     Then it should be deleted from the database within 10 seconds
 
-  Scenario: Show location
+  Scenario: Show this art piece
     Given I am on the Index page
-    When I click on show location
+    When I click on show this art piece
     Then I should be able to see all the details of a certain art piece
