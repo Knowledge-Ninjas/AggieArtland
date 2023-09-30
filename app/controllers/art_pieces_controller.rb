@@ -8,7 +8,7 @@ class ArtPiecesController < ApplicationController
 
   # GET /art_pieces/1 or /art_pieces/1.json
   def show
-    @art_piece = ArtPiece.find(params[:id])
+    @art_piece = ArtPiece.find_by(id: params[:id])
   end
 
   # GET /art_pieces/new
@@ -61,7 +61,7 @@ class ArtPiecesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_art_piece
-      @art_piece = ArtPiece.find(params[:id])
+      @art_piece = ArtPiece.find_by(id: params[:id])
     end
 
     # Only allow a list of trusted parameters through.
