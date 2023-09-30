@@ -1,7 +1,13 @@
 # README
 
-## HOW TO RUN ON LOCAL HOST 
+## INSTALLATION 
 1. Clone the repo <\br> ```git clone https://github.com/AggielandArtTrail/AggieArtland.git```
+2. Install dependencies: `bundle install`
+
+## TESTING
+1. Run 'rails db:migrate RAILS_ENV=test'
+2. To run Cucumber tests: `bundle exec cucumber`
+3. To run RSpec tests: `bundle exec rspec`
 
 ## GENERAL INTRODUCTION
 
