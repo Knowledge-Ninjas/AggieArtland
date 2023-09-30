@@ -75,10 +75,10 @@ end
         }.to change(User, :count).by(1)
       end
 
-      it 'redirects to the created user' do
+      it 'redirects to the home page' do
         post :create, params: { user: valid_params }
 
-        expect(response).to redirect_to(user_url(assigns(:user)))
+        expect(response).to redirect_to(art_pieces_url)
       end
     end
   end

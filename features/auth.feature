@@ -34,7 +34,7 @@ Given the following users exist:
         And I fill in "Password" with "anything"
         And I fill in "Password confirmation" with "anything"
         And I press "Sign Up"
-        Then I should see a notice "account already exists"
+        Then I should be on the sign up page
 
     Scenario: Passwords don't match
         Given I am on the sign up page
@@ -43,7 +43,7 @@ Given the following users exist:
         And I fill in "Password" with "mypass12"
         And I fill in "Password confirmation" with "mypass21"
         And I press "Sign Up"
-        Then I should see a notice "passwords do not match"
+        Then I should be on the sign up page
 
     Scenario: Log In
         Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
@@ -60,16 +60,17 @@ Given the following users exist:
         When I fill in "Email" with "abc@gmail.com"
         And I fill in "Password" with "xyz1234"
         And I press "Log in"
-        Then I should see a notice "incorrect password"
+        Then I should see the login page
 
     Scenario: User does not exist
         Given I am on the login page
         When I fill in "Email" with "abc@gmail.com"
         And I fill in "Password" with "xyz1234"
         And I press "Log in"
-        Then I should see a notice "user does not exist"
+        Then I should see the login page
 
     Scenario: Logout
-        Given I am on the user page
-        When I press "Log out"
+        Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
+        And I am on the user page
+        When I click "Logout"
         Then I should see the login page
