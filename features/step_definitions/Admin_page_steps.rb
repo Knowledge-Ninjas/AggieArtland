@@ -76,3 +76,24 @@ Then("I should be able to see all the details of a certain art piece") do
   expect(page).to have_content(art_piece.artist)
   # Add additional assertions as needed
 end
+
+Given('I am in the edit art piece page with id {int}') do |id|
+  @artPiece = ArtPiece.create(id:id, name:'Dummy', address:'Dummy')
+  visit edit_art_piece_path(id)
+end
+
+When('I attach {string} to {string}') do |file, field|
+  page.attach_file field, File.join(Rails.root, 'test', file)
+end
+
+When('I click on {string}') do |string|
+  click_button(string)
+end
+
+Then('I should be redirected to the show art piece page with id {int}') do |id|
+  expect(current_path).to eq(show_art_piece_path(id))
+end
+
+Then('I should see the image {string}') do |image|
+  expect(page).to have_xpath("//img[contains(@src, \"#{image}\")]")
+end

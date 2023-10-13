@@ -8,7 +8,7 @@
 </p>
 
 <%= form_with url: upload_art_icon_path(@art_piece), multipart: true do |form| %>
-  <%= file_field_tag :picture %>
+  <%= file_field_tag :picture, id: 'art_icon_upload_field' %>
   <%= form.submit 'Upload Icon'%>
 <% end %>
 
