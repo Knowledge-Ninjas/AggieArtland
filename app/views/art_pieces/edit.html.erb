@@ -2,7 +2,17 @@
 
 <%= render "form", art_piece: @art_piece %>
 
-<br>
+<br><br>
+
+<p>Set art piece icon:
+</p>
+
+<%= form_with url: upload_art_icon_path(@art_piece), multipart: true do |form| %>
+  <%= file_field_tag :picture %>
+  <%= form.submit 'Upload Icon'%>
+<% end %>
+
+<br><br>
 
 <div>
   <%= link_to "Show this art piece", @art_piece %> |
