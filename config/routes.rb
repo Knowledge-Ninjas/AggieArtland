@@ -10,8 +10,7 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
   post 'logout', to: 'sessions#destroy'
-  get  'logout', to: 'sessions#destroy
-
-  get 'map', to: 'map#show
+  get  'logout', to: 'sessions#destroy'
+  get 'map', to: 'map#show'
   post '/art_pieces/upload_icon/:id', to: 'art_pieces#upload_icon', as: 'upload_art_icon'
 end
