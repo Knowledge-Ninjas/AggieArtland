@@ -97,3 +97,17 @@ end
 Then('I should see the image {string}') do |image|
   expect(page).to have_xpath("//img[contains(@src, \"#{image}\")]")
 end
+
+Given('I have uploaded {string} as an icon for art piece ID {int}') do |file, id|
+  step %{I am in the edit art piece page with id #{id}}
+  step %{I attach "#{file}" to "art_icon_upload_field"}
+  step %{I click on "Upload Icon"}
+end
+
+Given('I go to the edit art piece page with id {int}') do |id|
+  visit edit_art_piece_path(id)
+end
+
+Given('I go to the art pieces page') do
+  visit art_pieces_path
+end
