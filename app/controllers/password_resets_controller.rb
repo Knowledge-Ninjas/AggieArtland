@@ -1,7 +1,7 @@
 class PasswordResetsController < ApplicationController
     def forgot
         if params[:email].blank? # check if email is present
-          return render json: {error: 'Email not present'}
+          return render json: {error: 'Email not present'}, status: :bad_request
         end
     
         user = User.find_by(email: params[:email]) # if present find user by email
