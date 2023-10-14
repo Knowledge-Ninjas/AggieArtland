@@ -1,4 +1,5 @@
 <!-- sessions/login.html.erb -->
+<p style="color: red"><%= notice %></p>
 <%= form_for(:session, url: login_path) do |f| %>
   <div class="field">
     <%= f.label :email %>
@@ -8,6 +9,10 @@
   <div class="field">
     <%= f.label :password %>
     <%= f.password_field :password, name: 'session[password]' %>
+  </div>
+
+  <div class="field">
+    <%= link_to "Forgot your password?", password_reset_path %>
   </div>
 
   <%= f.submit 'Log in' %>
