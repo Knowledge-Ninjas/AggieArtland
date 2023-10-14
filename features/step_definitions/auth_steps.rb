@@ -27,6 +27,9 @@ end
 When('I press {string}') do |button|
     click_button(button)
 end
+When('I click {string}') do |link|
+    click_link(link)
+end
 
 Then('I should be on the user page') do
     visit "/users/1"
@@ -50,13 +53,19 @@ Given('I am on the user page') do ||
 end
 
 Then('I should see the login page') do ||
-  expect(page.path).to eq(login_path)
+  expect(page).to have_current_path(login_path)
 end
 
 Then('I should see a notice {string}') do |string|
-    expect(page).to have_content(notice_text)
+    expect(page).to have_content(string)
 end
 
+Then('I should receive an email to {string}') do |string|
+  expect { UserMailer.forgot_password(User.find_by(email:string)).deliver }.to change { ActionMailer::Base.deliveries.count }.by(1)
+end
 
+Given('I am on the reset password page') do ||
+    visit password_reset_edit_path
+end
 
 

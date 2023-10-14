@@ -1,10 +1,5 @@
-<% if flash[:notice] %>
-  <%= content_tag :h1, flash[:notice] %>
-<% elsif flash[:alert] %>
-  <%= content_tag :h1, flash[:alert] %>
-<% else %>
-  <%= content_tag :h1, "Forgot Password" %>
-<% end %>
+<%= content_tag :h1, "Forgot Password" %>
+
 
 <%= form_with url: password_reset_path do |form| %>
   <%= form.label :email %>

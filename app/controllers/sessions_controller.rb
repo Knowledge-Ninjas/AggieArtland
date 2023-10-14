@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
             puts "Inside If blocj"
             redirect_to @user, notice: 'User successfully Logged in!'
         else
-            redirect_to login_path , notice: "Something Went Wrong!!"
+            redirect_to login_path , notice: "Incorrect email or password"
         end
     end
 

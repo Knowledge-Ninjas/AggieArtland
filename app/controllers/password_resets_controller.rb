@@ -1,30 +1,38 @@
 class PasswordResetsController < ApplicationController
-
-    def new
+    def forgot
+        if params[:email].blank? # check if email is present
+          return render json: {error: 'Email not present'}
+        end
+    
+        user = User.find_by(email: params[:email]) # if present find user by email
+    
+        if user.present?
+          #user.generate_password_token! #generate pass token
+          UserMailer.forgot_password(user).deliver_now
+          render json: {status: 'ok'}, status: :ok
+        else
+          render json: {error: ['Email address not found. Please check and try again.']}, status: :not_found
+        end
     end
 
-    def create
-        if params[:email].empty?
-            redirect_to password_reset_path, alert: "Email can't be blank."
-            return
-        elsif !valid_email?(params[:email])
-            redirect_to password_reset_path, alert: "Invalid email format. Please enter a valid email address."
-            return
-        end
-        @user =User.find_by(email: params[:email])
+    def edit
+        @user = User.find_signed(params[:token], purpose: "password_reset")
+    rescue
+        redirect_to login_path, notice: "Your token has expired, please try again."
+    end
+    
+    def reset
+        @user = User.find_signed(params[:token], purpose: "password_reset")
         
-        if @user.present?
-            PassswordMailer.with(user:@user).reset.deliver_now 
+        if @user.update(password_params)
+            redirect_to login_path, notice: "Password has been reset!"
+        else
+            redirect_to password_reset_edit_path, notice: @user.errors.full_messages.first
         end
-        redirect_to root_path, notice: "If an account with email was found, we have sent a link to reset your password."
-
     end
 
-    def valid_email?(email)
-        # Regular expression for matching email addresses
-        email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-      
-        # Use the match? method to check if the string matches the email regex
-        email.match?(email_regex)
+    def password_params
+        params.require(:user).permit(:password,:password_confirmation)
     end
+  
 end
