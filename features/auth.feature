@@ -79,4 +79,4 @@ Given the following users exist:
         When I fill in "Password" with "newpass12"
         And I fill in "Password confirmation" with "newpass12"
         And I press "Reset Password"
-        Then I should see "Password has been reset"
+        Then I should see "Password has been reset!"
