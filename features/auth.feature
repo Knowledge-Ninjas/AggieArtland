@@ -27,6 +27,15 @@ Given the following users exist:
         And I should see "Billy Bob"
         And I should see "billybob@gmail.com"
 
+    Scenario: Existing Account
+        Given I am on the sign up page
+        When I fill in "Email" with "pete@gmail.com"
+        And I fill in "Name" with "Pete"
+        And I fill in "Password" with "anything"
+        And I fill in "Password confirmation" with "anything"
+        And I press "Sign Up"
+        Then I should be on the sign up page
+
     Scenario: Passwords don't match
         Given I am on the sign up page
         When I fill in "Email" with "newguy@gmail.com"
@@ -35,6 +44,7 @@ Given the following users exist:
         And I fill in "Password confirmation" with "mypass21"
         And I press "Sign Up"
         Then I should see a notice "Password confirmation doesn't match Password"
+
 
     Scenario: Log In
         Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
@@ -53,12 +63,14 @@ Given the following users exist:
         And I press "Log in"
         Then I should see a notice "Incorrect email or password"
 
+
     Scenario: User does not exist
         Given I am on the login page
         When I fill in "Email" with "abc@gmail.com"
         And I fill in "Password" with "xyz1234"
         And I press "Log in"
         Then I should see a notice "Incorrect email or password"
+
 
     Scenario: Logout
         Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
@@ -77,4 +89,4 @@ Given the following users exist:
         Given I am on the reset password page
         When I fill in "Password" with "newpass12"
         And I fill in "Password confirmation" with "newpass12"
-        
+

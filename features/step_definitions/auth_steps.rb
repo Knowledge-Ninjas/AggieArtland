@@ -58,6 +58,7 @@ end
 
 Then('I should see a notice {string}') do |string|
     expect(page).to have_content(string)
+
 end
 
 Then('I should receive an email to {string}') do |string|

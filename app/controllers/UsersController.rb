@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       if @user.save
         UserMailer.welcome_email(user_params[:email]).deliver_now
         session[:user_id] = @user.id
-        redirect_to @user, notice: 'User successfully created!'
+        redirect_to '/art_pieces', notice: 'User successfully created!'
       else
         redirect_to signup_path, notice: @user.errors.full_messages.first
       end

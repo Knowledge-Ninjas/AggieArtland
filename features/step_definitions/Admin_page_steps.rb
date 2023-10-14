@@ -1,77 +1,113 @@
-Given('I am logged in as an admin') do
-  # Write code here to log in as an admin user
-  login_as_admin
+# features/step_definitions/admin_steps.rb
+require 'factory_bot'
+
+Given("I am in the Index Page") do
+  visit art_pieces_path
 end
-When('I open the admin page') do
-  # Write code here to open the admin page
-  visit admin_page_path
+
+Then("I should see the details of all the Art Pieces") do
+  art_pieces = ArtPiece.all
+  art_pieces.each do |art_piece|
+    expect(page).to have_content(art_piece.name)
+    expect(page).to have_content(art_piece.description)
+    expect(page).to have_content(art_piece.artist)
+    # Add additional assertions as needed
+  end
 end
-Then('I should be able to view all the details of the current art pieces') do
-  # Write code here to verify that all art pieces' details are visible
-  expect(page).to have_content('Art Piece Details')
+
+Given("I am in the Index page") do
+  visit art_pieces_path
 end
-Given('I am in the Index page') do
-  # Write code here to navigate to the Index page
-  visit index_page_path
+
+When("I click on the new art piece link") do
+  click_link('New art piece')
 end
-When('I click on the new Location button') do
-  # Write code here to click on the new Location button
-  click_button 'New Location'
+
+Then("I should be redirected to the page") do
+  expect(current_path).to eq(new_art_piece_path)
 end
-Then('I should be redirected to the page') do
-  # Write code here to verify the redirection to the expected page
-  expect(page).to have_current_path(new_location_page_path)
+
+And("it should be uploaded to the database within {int} seconds") do |seconds|
+  art_piece = ArtPiece.last
+  expect(art_piece.name).to eq('New Art')
+  expect(art_piece.address).to eq('123 Main St')
 end
-Then('I should be able to input the details of the new Art Piece') do
-  # Write code here to input the details of the new Art Piece
-  fill_in 'Location Name', with: 'New Location'
-  fill_in 'Address', with: '123 Main St'
-  click_button 'Save'
+
+Given("I am in the show art piece with id {int}") do |id|
+  @artPiece = ArtPiece.create(id:id, name:'Dummy', address:'Dummy')
+  visit show_art_piece_path(id)
 end
-Then('it should be updated in the database within {int} seconds') do |int|
-  # Write code here to verify that the new Art Piece is updated in the database within the specified time
-  sleep(int)
-  expect(Location.find_by(name: 'New Location')).not_to be_nil
+
+When("I click the Edit this art piece link") do
+  find("#edit").click
 end
-Given('I am in the show location page') do
-  # Write code here to navigate to the show location page
-  visit location_page_path(location_id)
+
+Then("I should be redirected to the updating page") do
+  expect(page).to have_content("Editing art piece")
 end
-When('I click the edit location button') do
-  # Write code here to click the edit location button
-  click_button 'Edit Location'
+
+And("I should be able to change any aspect of the Art Piece") do
+  fill_in 'Address', with: 'New Address'
+  fill_in 'Description', with: 'New Description'
 end
-Then('I should be redirected to the updating page') do
-  # Write code here to verify the redirection to the updating page
-  expect(page).to have_current_path(update_location_page_path(location_id))
+
+And("it should be updated in the database within {int} seconds") do |second|
+  
+  element = ArtPiece.find_by(id: @artPiece.id)
+  expect(element.address).to eq("New Address")
 end
-Then('I should be able to change any aspect of the Art Piece') do
-  # Write code here to change any aspect of the Art Piece
-  fill_in 'Location Name', with: 'Updated Location'
-  click_button 'Save'
+
+Given("I am on the Index page") do
+  visit art_pieces_path
 end
-Given('I am on the show location page') do
-  # Write code here to navigate to the show location page
-  visit location_page_path(location_id)
+
+And("I have a piece with id {int}") do |id|
+  ArtPiece.create(id:id, name:'Dummy', address:'Dummy')
 end
-When('I click on the delete location button') do
-  # Write code here to click on the delete location button
-  click_button 'Delete Location'
+
+When("I click on show this art piece with id {int}") do |id| 
+  visit show_art_piece_path(id)
 end
-Then('it should be deleted from the database within {int} seconds') do |int|
-  # Write code here to verify that the location is deleted from the database within the specified time
-  sleep(int)
-  expect(Location.find_by(id: location_id)).to be_nil
+
+Then("I should be able to see all the details of a certain art piece") do
+  art_piece = ArtPiece.first
+  expect(page).to have_content(art_piece.name)
+  expect(page).to have_content(art_piece.description)
+  expect(page).to have_content(art_piece.artist)
+  # Add additional assertions as needed
 end
-Given('I am on the Index page') do
-  # Write code here to navigate to the Index page
-  visit index_page_path
+
+Given('I am in the edit art piece page with id {int}') do |id|
+  @artPiece = ArtPiece.create(id:id, name:'Dummy', address:'Dummy')
+  visit edit_art_piece_path(id)
 end
-When('I click on show location') do
-  # Write code here to click on show location
-  click_link 'Show Location'
+
+When('I attach {string} to {string}') do |file, field|
+  page.attach_file field, File.join(Rails.root, 'test', file)
 end
-Then('I should be able to see all the details of a certain art piece') do
-  # Write code here to verify that all details of a certain art piece are visible
-  expect(page).to have_content('Location Details')
+
+When('I click on {string}') do |string|
+  click_button(string)
+end
+
+Then('I should be redirected to the show art piece page with id {int}') do |id|
+  expect(current_path).to eq(show_art_piece_path(id))
+end
+
+Then('I should see the image {string}') do |image|
+  expect(page).to have_xpath("//img[contains(@src, \"#{image}\")]")
+end
+
+Given('I have uploaded {string} as an icon for art piece ID {int}') do |file, id|
+  step %{I am in the edit art piece page with id #{id}}
+  step %{I attach "#{file}" to "art_icon_upload_field"}
+  step %{I click on "Upload Icon"}
+end
+
+Given('I go to the edit art piece page with id {int}') do |id|
+  visit edit_art_piece_path(id)
+end
+
+Given('I go to the art pieces page') do
+  visit art_pieces_path
 end

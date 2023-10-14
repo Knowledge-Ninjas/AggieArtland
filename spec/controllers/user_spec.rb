@@ -18,38 +18,42 @@ RSpec.describe UsersController, type: :controller do
 #     end
 #   end
 
-describe 'GET #show' do
-let(:user) { FactoryBot.create(:user) }
-
-context 'when logged in' do
-  before do
-    # Simulate authentication by setting a user_id in the session
-    session[:user_id] = user.id
-  end
-
-  it 'renders the show template' do
-    get :show, params: { id: user.id }
-    expect(response).to render_template(:show)
-  end
-
-  it 'assigns the requested user to @user' do
-    get :show, params: { id: user.id }
-    expect(assigns(:user)).to eq(user)
+  describe 'GET #show' do
+    let(:user) { FactoryBot.create(:user) }
+    
+    context 'when logged in' do
+      before do
+        # Simulate authentication by setting a user_id in the session
+        session[:user_id] = user.id
+      end
+    
+      it 'renders the show template' do
+        get :show, params: { id: user.id }
+        expect(response).to render_template(:show)
+      end
+    
+      it 'assigns the requested user to @user' do
+        get :show, params: { id: user.id }
+        expect(assigns(:user)).to eq(user)
+      end
+    end
+    
+    context 'when not logged in' do
+      it 'redirects to the login page' do
+        get :show, params: { id: user.id }
+        expect(response).to redirect_to(login_path)
+      end
+    
+      it 'sets a flash error message' do
+        get :show, params: { id: user.id }
+        expect(flash[:error]).to be_present
+      end
+    end
   end
 end
-
-context 'when not logged in' do
-  it 'redirects to the login page' do
-    get :show, params: { id: user.id }
-    expect(response).to redirect_to(login_path)
-  end
-
-  it 'sets a flash error message' do
-    get :show, params: { id: user.id }
-    expect(flash[:error]).to be_present
-  end
 end
-end
+
+
 
   describe 'GET #new' do
     it 'assigns a new user to @user' do
@@ -75,10 +79,10 @@ end
         }.to change(User, :count).by(1)
       end
 
-      it 'redirects to the created user' do
+      it 'redirects to the home page' do
         post :create, params: { user: valid_params }
 
-        expect(response).to redirect_to(user_url(assigns(:user)))
+        expect(response).to redirect_to(art_pieces_url)
       end
     end
   end

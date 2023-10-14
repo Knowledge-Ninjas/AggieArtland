@@ -1,0 +1,118 @@
+Using the default profile...
+Feature: Admin Page
+  As an admin
+  I want to be able to manage the art pieces database
+  So that I can keep the map upto date
+
+  Scenario: List all the Art Pieces in the database     # features/Admin_page.feature:6
+    Given I am in the Index Page                        # features/step_definitions/Admin_page_steps.rb:4
+    Then I should see the details of all the Art Pieces # features/step_definitions/Admin_page_steps.rb:8
+
+  Scenario: Create a New Art Piece                              # features/Admin_page.feature:10
+    Given I am in the Index page                                # features/step_definitions/Admin_page_steps.rb:18
+    When I click on the new art piece link                      # features/step_definitions/Admin_page_steps.rb:22
+    Then I should be redirected to the page                     # features/step_definitions/Admin_page_steps.rb:26
+    And I fill in "Name" with "New Art"                         # features/step_definitions/auth_steps.rb:23
+    And I fill in "Address" with "123 Main St"                  # features/step_definitions/auth_steps.rb:23
+    And I press "Create Art piece"                              # features/step_definitions/auth_steps.rb:27
+    And it should be uploaded to the database within 10 seconds # features/step_definitions/Admin_page_steps.rb:30
+
+  Scenario: Update an Existing Art Piece                       # features/Admin_page.feature:19
+    Given I am in the show art piece with id 1                 # features/step_definitions/Admin_page_steps.rb:36
+    When I click the Edit this art piece link                  # features/step_definitions/Admin_page_steps.rb:41
+    Then I should be redirected to the updating page           # features/step_definitions/Admin_page_steps.rb:45
+    And I should be able to change any aspect of the Art Piece # features/step_definitions/Admin_page_steps.rb:49
+
+  Scenario: Show this art piece                                         # features/Admin_page.feature:25
+    Given I am on the Index page                                        # features/step_definitions/Admin_page_steps.rb:60
+    And I have a piece with id 1                                        # features/step_definitions/Admin_page_steps.rb:64
+    When I click on show this art piece with id 1                       # features/step_definitions/Admin_page_steps.rb:68
+    Then I should be able to see all the details of a certain art piece # features/step_definitions/Admin_page_steps.rb:72
+
+Feature: Authentication System
+    As a registered user,
+    So that I can access the resources of the website securely,
+    I want to log into the website with my email and password.
+
+  Background: users in database      # features/auth.feature:6
+    Given the following users exist: # features/step_definitions/auth_steps.rb:1
+      | email             | password_digest | name  |
+      | abc@gmail.com     | abc123          | Abet  |
+      | xyz@gmail.com     | asj438f84       | Kayla |
+      | and123@yahoo.com  | password01      | Syd   |
+      | pete@gmail.com    | idk1234         | Pete  |
+
+  Scenario: Navigate to Create Account   # features/auth.feature:14
+    Given I am on the login page         # features/step_definitions/auth_steps.rb:7
+    When I click on the sign up button   # features/step_definitions/auth_steps.rb:11
+    Then I should be on the sign up page # features/step_definitions/auth_steps.rb:15
+
+  Scenario: Create Account                                 # features/auth.feature:19
+    Given I am on the sign up page                         # features/step_definitions/auth_steps.rb:19
+    When I fill in "Email" with "billybob@gmail.com"       # features/step_definitions/auth_steps.rb:23
+    And I fill in "Name" with "Billy Bob"                  # features/step_definitions/auth_steps.rb:23
+    And I fill in "Password" with "bobbobbob"              # features/step_definitions/auth_steps.rb:23
+    And I fill in "Password confirmation" with "bobbobbob" # features/step_definitions/auth_steps.rb:23
+    And I press "Sign Up"                                  # features/step_definitions/auth_steps.rb:27
+    Then I should be on the user page                      # features/step_definitions/auth_steps.rb:34
+    And I should see "Billy Bob"                           # features/step_definitions/auth_steps.rb:38
+    And I should see "billybob@gmail.com"                  # features/step_definitions/auth_steps.rb:38
+
+  Scenario: Existing Account                              # features/auth.feature:30
+    Given I am on the sign up page                        # features/step_definitions/auth_steps.rb:19
+    When I fill in "Email" with "pete@gmail.com"          # features/step_definitions/auth_steps.rb:23
+    And I fill in "Name" with "Pete"                      # features/step_definitions/auth_steps.rb:23
+    And I fill in "Password" with "anything"              # features/step_definitions/auth_steps.rb:23
+    And I fill in "Password confirmation" with "anything" # features/step_definitions/auth_steps.rb:23
+    And I press "Sign Up"                                 # features/step_definitions/auth_steps.rb:27
+    Then I should be on the sign up page                  # features/step_definitions/auth_steps.rb:15
+
+  Scenario: Passwords don't match                         # features/auth.feature:39
+    Given I am on the sign up page                        # features/step_definitions/auth_steps.rb:19
+    When I fill in "Email" with "newguy@gmail.com"        # features/step_definitions/auth_steps.rb:23
+    And I fill in "Name" with "Newt"                      # features/step_definitions/auth_steps.rb:23
+    And I fill in "Password" with "mypass12"              # features/step_definitions/auth_steps.rb:23
+    And I fill in "Password confirmation" with "mypass21" # features/step_definitions/auth_steps.rb:23
+    And I press "Sign Up"                                 # features/step_definitions/auth_steps.rb:27
+    Then I should be on the sign up page                  # features/step_definitions/auth_steps.rb:15
+
+  Scenario: Log In                                                                                     # features/auth.feature:48
+    Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob" # features/step_definitions/auth_steps.rb:42
+    And I am on the login page                                                                         # features/step_definitions/auth_steps.rb:7
+    When I fill in "Email" with "billybob@gmail.com"                                                   # features/step_definitions/auth_steps.rb:23
+    And I fill in "Password" with "bobbobbob"                                                          # features/step_definitions/auth_steps.rb:23
+ THe user is
+#<User:0x000000010f2d9118>
+Inside If blocj
+    And I press "Log in"                                                                               # features/step_definitions/auth_steps.rb:27
+    Then I should be on the user page                                                                  # features/step_definitions/auth_steps.rb:34
+    And I should see "Billy Bob"                                                                       # features/step_definitions/auth_steps.rb:38
+    And I should see "billybob@gmail.com"                                                              # features/step_definitions/auth_steps.rb:38
+
+  Scenario: Incorrect password                  # features/auth.feature:58
+    Given I am on the login page                # features/step_definitions/auth_steps.rb:7
+    When I fill in "Email" with "abc@gmail.com" # features/step_definitions/auth_steps.rb:23
+    And I fill in "Password" with "xyz1234"     # features/step_definitions/auth_steps.rb:23
+ THe user is
+
+    And I press "Log in"                        # features/step_definitions/auth_steps.rb:27
+    Then I should see the login page            # features/step_definitions/auth_steps.rb:55
+
+  Scenario: User does not exist                 # features/auth.feature:65
+    Given I am on the login page                # features/step_definitions/auth_steps.rb:7
+    When I fill in "Email" with "abc@gmail.com" # features/step_definitions/auth_steps.rb:23
+    And I fill in "Password" with "xyz1234"     # features/step_definitions/auth_steps.rb:23
+ THe user is
+
+    And I press "Log in"                        # features/step_definitions/auth_steps.rb:27
+    Then I should see the login page            # features/step_definitions/auth_steps.rb:55
+
+  Scenario: Logout                                                                                     # features/auth.feature:72
+    Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob" # features/step_definitions/auth_steps.rb:42
+    And I am on the user page                                                                          # features/step_definitions/auth_steps.rb:51
+    When I click "Logout"                                                                              # features/step_definitions/auth_steps.rb:30
+    Then I should see the login page                                                                   # features/step_definitions/auth_steps.rb:55
+
+12 scenarios (12 passed)
+73 steps (73 passed)
+0m7.207s
