@@ -21,6 +21,8 @@
       center: {lat: latitude, lng: longitude},
       zoom: 15
     });
+    
+    infoWindow = new google.maps.InfoWindow();
 
     var marker = new google.maps.Marker({
       position: {lat: latitude, lng: longitude},
@@ -30,6 +32,27 @@
         url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
       }
     });
+    
+    setInterval(() => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+
+          infoWindow.setPosition(pos);
+          marker.setPosition(pos);
+          // infoWindow.open(map);
+          // map.setCenter(pos);
+        },
+        () => {
+          handleLocationError(true, infoWindow, map.getCenter());
+        },
+      );
+    },1000)
+
+
 
     // Array of art pieces
     var artPieces = <%= @art_pieces.to_json.html_safe %>;
