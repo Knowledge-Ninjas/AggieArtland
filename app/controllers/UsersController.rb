@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
         session[:user_id] = @user.id
-        redirect_to '/art_pieces', notice: 'User successfully created!'
+        redirect_to '/map', notice: 'User successfully created!'
       else
         render 'new'
       end

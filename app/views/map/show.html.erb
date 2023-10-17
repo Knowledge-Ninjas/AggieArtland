@@ -32,7 +32,7 @@
         url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
       }
     });
-    
+
     setInterval(() => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -44,7 +44,7 @@
           infoWindow.setPosition(pos);
           marker.setPosition(pos);
           // infoWindow.open(map);
-          // map.setCenter(pos);
+          map.setCenter(pos);
         },
         () => {
           handleLocationError(true, infoWindow, map.getCenter());
