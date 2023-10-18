@@ -11,4 +11,12 @@ class ArtPiece < ApplicationRecord
         'art_piece_icon_' + id.to_s + '.png'
     end
 
+    def get_icon_src
+        if has_icon?
+            'art_piece_icon_' + id.to_s + '.png'
+        else
+            'https://i.pinimg.com/originals/93/ae/51/93ae515eb75b21f3af334fd3888ee367.jpg'
+        end
+    end
+
 end
