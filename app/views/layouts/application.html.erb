@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+
     <% if logged_in? %>
       Welcome, <%= current_user.email %>! <%= link_to 'Logout', logout_path %>
     <% else %>
