@@ -20,6 +20,11 @@ class UsersController < ApplicationController
     def show
       @user = User.find(params[:id])
     end
+
+    def stamps
+      @user = User.find(params[:id])
+      render :stamps
+    end
   
     private
   

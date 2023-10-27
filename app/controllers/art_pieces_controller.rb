@@ -70,6 +70,22 @@ class ArtPiecesController < ApplicationController
     end
   end
 
+  def checkin
+    art_piece = ArtPiece.find_by(id: params[:id])
+
+    user_id = session[:user_id]
+    user = User.find_by(id: user_id)
+
+    if user.has_stamp(art_piece)
+      flash[:notice] = "You've already checked in to art piece " + art_piece.name + '!'
+    else
+      flash[:notice] = 'Checked in to art piece ' + art_piece.name + '!'
+      user.set_stamp(art_piece, true)
+    end
+
+    redirect_to show_art_piece_path(art_piece)
+  end
+
   def upload_icon
     art_piece = ArtPiece.find_by(id: params[:id])
     icon = params[:picture]

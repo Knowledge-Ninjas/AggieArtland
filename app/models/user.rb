@@ -23,6 +23,8 @@ class User < ApplicationRecord
     else
       self.stamps = ~((~self.stamps) | (1 << art_piece.id))
     end
+
+    self.update_attribute(:stamps, self.stamps)
   end
 
   def get_earned_stamps()
