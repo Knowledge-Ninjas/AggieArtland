@@ -50,8 +50,8 @@ end
 
 And('I am logged in with email {string} and password {string}') do |email, pwd|
     step %{I am on the login page}
-    step %{I fill in "Email" with "billybob@gmail.com"}
-    step %{I fill in "Password" with "bobbobbob"}
+    step %{I fill in "Email" with "#{email}"}
+    step %{I fill in "Password" with "#{pwd}"}
     step %{I press "Log in"}
 end
 
