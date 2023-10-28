@@ -27,24 +27,29 @@ class UsersController < ApplicationController
       if params[:search].present?
         @users = @users.where("email LIKE ? OR name LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
       end
-    end
+    end    
 
     def toggle_admin
       @user = User.find(params[:user_id])
-      puts @user.name
-      puts @user.id
-      if @user.user_type == "admin"
-        @user.update(user_type: nil)
-        notice = 'Admin access revoked successfully'
-      else
-        @user.update(user_type: "admin")
-        notice = 'User added as admin successfully'
-      end 
+      current_user = User.find(session[:user_id]) 
 
+      if current_user.is_admin? && @user != current_user 
+        if @user.user_type == "admin"
+          @user.update_column(:user_type, nil)
+          notice = 'Admin access revoked successfully'
+        else
+          @user.update_column(:user_type, "admin")
+          notice = 'User added as admin successfully'
+        end
+      else
+        notice = 'You do not have permission to perform this action'
+      end
+    
       redirect_to admin_panel_users_path, notice: notice
     end
-  
-    private
+    
+    
+      private
   
     def user_params
       params.require(:user).permit(:email, :name, :password, :password_confirmation)

@@ -23,7 +23,7 @@
         <td>
           <%= form_tag toggle_admin_users_path, method: :post do %>
             <%= hidden_field_tag :user_id, user.id %>
-            <%= radio_button_tag :admin, 'true', user.is_admin?, onchange: 'this.form.submit()' %>
+            <%= check_box_tag 'admin', 'true', user.is_admin?, onchange: 'this.form.submit()' %>
           <% end %>
         </td>
       </tr>
