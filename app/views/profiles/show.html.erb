@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .profile-container {
+            text-align: center;
+        }
+
+        .edit-button {
+            color: #333;
+            text-align: right;
+        }
+
+        .profile-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .section-container {
+            background-color: #f1f1f1;
+            padding: 20px;
+            max-height: 100px; /* Set a maximum height for each section */
+            overflow-x: auto; /* Enable horizontal scrolling for sections */
+            white-space: nowrap; /* Ensure items stay on a single line */
+            text-align: left; /* Align section titles to the left */
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            text-align: left;
+        }
+
+        .item {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            background-color: #ccc;
+        }
+
+        .buttons {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="edit-button">
+        <a href="<%= edit_profile_path %>" id="edit-link">Edit</a>
+        </div>
+        <div class="profile-title">
+            User Profile
+        </div>
+        <img alt="Profile Picture">
+        <div class="welcome-message">
+            <%= @user.name %>
+        </div>
+        <div class="section-title">Stamps</div>
+        <div class="section-container">
+            
+        </div>
+        <div class="section-title">Badges</div>
+        <div class="section-container">
+            
+        </div>
+        <div class="buttons">
+            <a href="<%= map_path %>" id="go-to-map-link">Go to Map</a>
+            <a href="<%= art_pieces_path %>" id="art-pieces-link">Art Pieces</a>  
+        </div>
+    </div>
+</body>
+</html>
