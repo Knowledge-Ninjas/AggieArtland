@@ -22,6 +22,11 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    def stamps
+      @user = User.find(params[:id])
+      render :stamps
+    end
+    
     def admin_panel
       @users = User.all
       if params[:search].present?

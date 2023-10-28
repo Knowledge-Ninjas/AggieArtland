@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_13_211839) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_27_193313) do
   create_table "art_pieces", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -33,6 +33,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_13_211839) do
     t.string "user_type"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
+    t.integer "badges"
+    t.integer "stamps"
   end
 
 end

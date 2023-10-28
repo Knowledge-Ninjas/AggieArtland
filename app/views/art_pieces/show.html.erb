@@ -9,6 +9,7 @@
 <%= render @art_piece %>
 
 <div>
+  <%= link_to "Check-in to this art piece", checkin_path(@art_piece) %>
   <% if current_user.is_admin? %>
     <%= link_to "Edit this art piece", edit_art_piece_path(@art_piece), id: "edit" %> |
   <% end %>
