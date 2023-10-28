@@ -1,0 +1,32 @@
+<h1>Admin Panel</h1>
+
+<%= form_tag admin_panel_users_path, method: :get, class: 'form-inline mb-4' do %>
+  <div class="form-group">
+    <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search for users' %>
+  </div>
+  <%= submit_tag 'Search', class: 'btn btn-primary ml-2' %>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.name %></td>
+        <td>
+          <%= form_tag toggle_admin_users_path, method: :post do %>
+            <%= hidden_field_tag :user_id, user.id %>
+            <%= radio_button_tag :admin, 'true', user.is_admin?, onchange: 'this.form.submit()' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
