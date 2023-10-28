@@ -80,7 +80,7 @@ RSpec.describe UsersController, type: :controller do
       it 'redirects to the home page' do
         post :create, params: { user: valid_params }
 
-        expect(response).to redirect_to(art_pieces_url)
+        expect(response).to redirect_to(map_path)
       end
     end
   end
