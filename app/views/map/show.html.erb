@@ -2,13 +2,12 @@
 <h1>map</h1>
 
 <div data-controller="geolocation" data-action="geolocation#search">
-  <%# <button data-action="geolocation#search">Find me</button> %>
+<%# <button data-action="geolocation#search">Find me</button> %>
 </div>
 
-<p>Your Latitude   : <span id="lat"><%= @latitude %></span> </p>
-<p>Your Longitude  : <span id="long"><%= @longitude %></span> </p>
-<p>Accuracy in 'm' : <span id="acc"> 0 </span> </p>
-
+<p>Your Latitude : <span id="lat"><%= @latitude %></span></p>
+<p>Your Longitude : <span id="long"><%= @longitude %></span></p>
+<p>Accuracy in 'm' : <span id="acc">0</span></p>
 
 <div id="map" style="height: 700px; width: 100%;"></div>
 
