@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do
+    collection do 
+      get 'admin_panel' 
+      post 'toggle_admin' 
+    end
+  end
+  
   resources :art_pieces
   root :to => redirect('/login')
   get '/art_pieces/:id', to: 'art_pieces#show', as: 'show_art_piece'

@@ -1,12 +1,15 @@
 class SessionsController < ApplicationController
     def create
         @user = User.find_by(email: params[:session][:email])
-        puts " THe user is"
-        puts @user
+
         if !!@user && @user.authenticate(params[:session][:password])
             session[:user_id] = @user.id
-            puts "Inside If blocj"
-            redirect_to '/map', notice: 'User successfully Logged in!'
+            
+            if @user.is_admin?
+                redirect_to art_pieces_path
+            else
+                redirect_to '/map', notice: 'User successfully Logged in!'
+            end
         else
             redirect_to login_path , notice: "Incorrect email or password"
         end
