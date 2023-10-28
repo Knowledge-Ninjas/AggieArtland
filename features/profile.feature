@@ -9,12 +9,6 @@ Feature: User profile
     When I press the 'Go to Map' link
     Then I should be on the map page
 
-    Scenario: Go to art pieces
-    Given I am logged in
-    And I am on the user profile page
-    When I press the 'Art Pieces' link
-    Then I should be on the art pieces page
-
     Scenario: Go to edit page
     Given I am logged in
     And I am on the user profile page
