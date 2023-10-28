@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   include ApplicationHelper
   before_action :require_login, only: [:show]
-
+  before_action :require_admin, only: [:admin_panel, :toggle_admin]
+  
     def new
       @user = User.new
     end
@@ -20,6 +21,33 @@ class UsersController < ApplicationController
     def show
       @user = User.find(params[:id])
     end
+
+    def stamps
+      @user = User.find(params[:id])
+      render :stamps
+    end
+    
+    def admin_panel
+      @users = User.all
+      if params[:search].present?
+        @users = @users.where("email LIKE ? OR name LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+      end
+    end
+
+    def toggle_admin
+      @user = User.find(params[:user_id])
+      puts @user.name
+      puts @user.id
+      if @user.user_type == "admin"
+        @user.update(user_type: nil)
+        notice = 'Admin access revoked successfully'
+      else
+        @user.update(user_type: "admin")
+        notice = 'User added as admin successfully'
+      end 
+
+      redirect_to admin_panel_users_path, notice: notice
+    end
   
     private
   
@@ -31,6 +59,13 @@ class UsersController < ApplicationController
       unless logged_in?
         flash[:error] = 'You must be logged in to access this section.'
         redirect_to login_path
+      end
+    end
+
+    def require_admin
+      unless current_user.is_admin?
+        flash[:error] = 'You must be an admin to access this section.'
+        redirect_to root_path
       end
     end
   end

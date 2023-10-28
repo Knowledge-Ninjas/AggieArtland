@@ -2,3 +2,27 @@
 
 <p>Name: <%= @user.name %></p>
 <p>Email: <%= @user.email %></p>
+
+<h3>STAMPS</h3>
+<% @user.get_first_n_stamps(5).each do |art_piece| %>
+  <div style="display:inline-block;">
+    <div style="position:relative; height: 50px; width: 50px">
+
+      <div style="position:absolute;">
+        <% if art_piece.has_icon? %>
+          <%= image_tag art_piece.icon_name, size: "50x50" %>
+        <% else %>
+          <%= image_tag "https://i.pinimg.com/originals/93/ae/51/93ae515eb75b21f3af334fd3888ee367.jpg", size: "50x50" %>
+        <% end %>
+      </div>
+
+      <div style="position:absolute; height: 50px; width: 50px; opacity: 0.5">
+        <%= image_tag "https://png.pngtree.com/png-clipart/20230804/original/pngtree-vector-certified-stamp-insurance-control-checked-vector-picture-image_9512783.png", size: "50x50" %>
+      </div>
+
+    </div>
+    <p><%= art_piece.name %></p>
+  </div>
+<% end %>
+
+<%= link_to "See all stamps", stamps_path(@user) %>

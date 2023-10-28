@@ -80,8 +80,37 @@ RSpec.describe UsersController, type: :controller do
       it 'redirects to the home page' do
         post :create, params: { user: valid_params }
 
-        expect(response).to redirect_to(art_pieces_url)
+        expect(response).to redirect_to(map_path)
       end
+    end
+  end
+
+  describe 'badges and stamps' do
+    let(:user) { FactoryBot.create(:user) }
+    let(:art_piece) { FactoryBot.create(:art_piece) }
+    
+    it 'has no stamps by default' do
+      expect(user.get_earned_stamps().length()).to eq(0)
+    end
+
+    it 'does not have stamp for art piece' do
+      expect(user.has_stamp(art_piece)).to eq(false)
+    end
+
+    it 'sets a stamp' do
+      user.set_stamp(art_piece, true)
+      expect(user.has_stamp(art_piece)).to eq(true)
+    end
+
+    it 'unsets a stamp' do
+      user.set_stamp(art_piece, true)
+      user.set_stamp(art_piece, false)
+      expect(user.has_stamp(art_piece)).to eq(false)
+    end
+
+    it 'retrieves art piece as stamped' do
+      user.set_stamp(art_piece, true)
+      expect(user.get_earned_stamps().include?(art_piece)).to eq(true)
     end
   end
 
