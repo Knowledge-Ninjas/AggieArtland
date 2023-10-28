@@ -48,6 +48,13 @@ Given('I have signed up with email {string}, name {string}, and password {string
     step %{I press "Sign Up"}
 end
 
+And('I am logged in with email {string} and password {string}') do |email, pwd|
+    step %{I am on the login page}
+    step %{I fill in "Email" with "#{email}"}
+    step %{I fill in "Password" with "#{pwd}"}
+    step %{I press "Log in"}
+end
+
 Given('I am on the user page') do ||
   visit "/users/1"
 end

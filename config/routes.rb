@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do
+    collection do 
+      get 'admin_panel' 
+      post 'toggle_admin' 
+    end
+  end
+  
   resources :art_pieces
   root :to => redirect('/login')
   get '/art_pieces/:id', to: 'art_pieces#show', as: 'show_art_piece'
+  get '/users/:id', to: 'users#show', as: 'show_user'
+  get '/stamps/:id', to: 'users#stamps', as: 'stamps'
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
@@ -20,4 +28,7 @@ Rails.application.routes.draw do
 
   get 'map', to: 'map#show'
   post '/art_pieces/upload_icon/:id', to: 'art_pieces#upload_icon', as: 'upload_art_icon'
+
+  get '/art_pieces/checkin/:id', to: 'art_pieces#checkin', as: 'checkin'
+
 end

@@ -16,3 +16,10 @@ address = " 3315 Tauber St, College Station, TX 77840"
 artist = "Kaitlyn McCollum '22"
 description = "Visit this newest addition to the Howdy murals around town in the Northgate Entertainment District, next to the A&M United Methodist Church Annex. It features defining aspects of both Texas A&M and the church, painted by an Aggie and a member of the congregation as a welcome to Aggieland and their church."
 ArtPiece.create(name:, address:, description:, artist:)
+
+User.create!(
+    email: 'admin@example.com',
+    password: 'adminpassword',
+    name: 'Admin User',
+    user_type: 'admin'
+  )

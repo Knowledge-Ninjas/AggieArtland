@@ -1,8 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<h1> Your Location </h1>
-
-<h1> Admin page - List of Art Pieces</h1>
+<h1>List of Art Pieces</h1>
 <div id="art_pieces">
   <% @art_pieces.each do |art_piece| %>
 
@@ -20,4 +18,6 @@
 </div>
 <br>
 
-<%= link_to "New art piece", new_art_piece_path %>
+<% if current_user.is_admin? %>
+  <%= link_to "New art piece", new_art_piece_path %>
+<% end %>

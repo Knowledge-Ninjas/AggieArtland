@@ -18,18 +18,18 @@ class ArtPiecesController < ApplicationController
 
   # GET /art_pieces/1/edit
   def edit
-    art_piece = ArtPiece.find_by(id: params[:id])
+    # art_piece = ArtPiece.find_by(id: params[:id])
     
-    user_id = session[:user_id]
-    user = User.find_by(id: user_id)
+    # user_id = session[:user_id]
+    # user = User.find_by(id: user_id)
     
-    if user == nil 
-      flash[:notice] = 'You must be logged in to access this section.'
-      redirect_to login_path
-    elsif !user.is_admin?
-      flash[:notice] = 'You do not have the required permissions to edit art pieces.'
-      redirect_to show_art_piece_path(art_piece)
-    end
+    # if user == nil 
+    #   flash[:notice] = 'You must be logged in to access this section.'
+    #   redirect_to login_path
+    # elsif !user.is_admin?
+    #   flash[:notice] = 'You do not have the required permissions to edit art pieces.'
+    #   redirect_to show_art_piece_path(art_piece)
+    # end
   end
 
   # POST /art_pieces or /art_pieces.json
@@ -68,6 +68,22 @@ class ArtPiecesController < ApplicationController
       format.html { redirect_to art_pieces_url, notice: "Art piece was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def checkin
+    art_piece = ArtPiece.find_by(id: params[:id])
+
+    user_id = session[:user_id]
+    user = User.find_by(id: user_id)
+
+    if user.has_stamp(art_piece)
+      flash[:notice] = "You've already checked in to art piece " + art_piece.name + '!'
+    else
+      flash[:notice] = 'Checked in to art piece ' + art_piece.name + '!'
+      user.set_stamp(art_piece, true)
+    end
+
+    redirect_to show_art_piece_path(art_piece)
   end
 
   def upload_icon
