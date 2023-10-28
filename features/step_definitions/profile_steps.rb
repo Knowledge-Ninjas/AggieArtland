@@ -14,9 +14,9 @@ When('I press the {string} link') do |string|
     click_link(string)
 end
 
-Then('I should be on the map page') do ||
-    expect(page).to have_current_path(map_path)
-end
+# Then('I should be on the map page') do ||
+#     expect(page).to have_current_path(map_path)
+# end
 
 Then('I should be on the art pieces page') do ||
     expect(page).to have_current_path(art_pieces_path)
