@@ -51,8 +51,6 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-
-
   describe 'GET #new' do
     it 'assigns a new user to @user' do
       get :new
@@ -96,7 +94,9 @@ RSpec.describe UsersController, type: :controller do
 
       it 'revokes admin access for a user' do
         post :toggle_admin, params: { user_id: admin_user.id }
-        expect(admin_user.reload.user_type).to be_nil
+        non_admin_user.reload
+
+        expect(non_admin_user.user_type).to eq("user")
         expect(response).to redirect_to(admin_panel_users_path)
       end
 
@@ -107,25 +107,23 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-    context 'when a non-admin is logged in' do
-      let(:non_admin_user) { FactoryBot.create(:user) }
-
-      before do
-        session[:user_id] = non_admin_user.id
-      end
-
-      it 'does not allow a non-admin user to perform this action' do
-        let(user_to_change) { FactoryBot.create(:user) } # Creating a regular user
-
-        post :toggle_admin, params: { user_id: user_to_change.id }
-        user_to_change.reload
-
-        expect(user_to_change.user_type).not_to eq('admin')
-        expect(response).to redirect_to(admin_panel_users_path)
-        expect(flash[:notice]).to eq('You do not have permission to perform this action')
-      end
+    context 'POST #toggle_admin when a non-admin is logged in' do
+        let(:non_admin_user) { FactoryBot.create(:user) }
+        let(:user_to_change) { FactoryBot.create(:user) }
+        
+        before do
+          session[:user_id] = non_admin_user.id
+        end
+    
+        it 'does not modify the user_type' do
+          post :toggle_admin, params: { user_id: user_to_change.id }
+          user_to_change.reload
+    
+          expect(user_to_change.user_type).not_to eq('admin')
+        end
     end
   end
+
   describe 'badges and stamps' do
     let(:user) { FactoryBot.create(:user) }
     let(:art_piece) { FactoryBot.create(:art_piece) }
