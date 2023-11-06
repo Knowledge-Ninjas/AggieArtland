@@ -47,6 +47,13 @@ gem 'bcrypt', '~> 3.1.7'
 # image processing
 gem "mini_magick"
 
+
+#Bootstrap
+gem 'bootstrap'
+
+#SCSS for stylesheets
+gem 'sass-rails'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

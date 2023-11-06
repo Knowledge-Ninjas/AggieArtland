@@ -1,19 +1,26 @@
-<!-- sessions/login.html.erb -->
-<p style="color: red"><%= notice %></p>
-<%= form_for(:session, url: login_path) do |f| %>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, name: 'session[email]' %>
-  </div>
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div class="card p-4" style="background-color: #f5f5dc; font-family: 'HelveticaNeue','Helvetica Neue',Helvetica,Arial,sans-serif;">
+    <h1 style="text-align: center;">Login</h1>
+    <p style="color: red; text-align: center;"><%= notice %></p>
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, name: 'session[password]' %>
-  </div>
+    <%= form_for(:session, url: login_path) do |f| %>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, name: 'session[email]', class: 'form-control', style: 'width: 100%;' %>
+      </div>
 
-  <div class="field">
-    <%= link_to "Forgot your password?", password_reset_path %>
-  </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, name: 'session[password]', class: 'form-control', style: 'width: 100%; margin-bottom: 10px;' %>
+      </div>
 
-  <%= f.submit 'Log in' %>
-<% end %>
+      <div class="form-group text-center">
+        <%= f.submit 'Log in', class: 'btn btn-primary rounded-pill', style: 'width: 100%; margin-top: 10px;' %>
+      </div>
+
+      <div class="text-center"; style="margin-top: 10px;">
+        <%= link_to "Forgot your password?", password_reset_path %>
+      </div>
+    <% end %>
+  </div>
+</div>
