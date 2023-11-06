@@ -3,6 +3,14 @@ Feature: Blog
     So that I can interact with the community,
     I want to have access to a blog.
 
+Background: blog posts in database
+Given the following blog posts exist:
+    | title             | body |
+    | Example           | example text|
+    | question          | How do i do this?|
+    | pls help          | help|
+    | fun fact!         | 1 + 1 = 2|
+
     Scenario: Go to blog
         Given I am on the sign up page
         When I press 'Blog'
@@ -17,8 +25,8 @@ Feature: Blog
     Scenario: View blog post
         Given I am logged in
         And I am on the blog page
-        When I click blog post 'Example Post'
-        Then I should see blog post 'Example Post'
+        When I click blog post 'Example'
+        Then I should see blog post 'Example'
 
     Scenario: Comment on post
         Given I am logged in

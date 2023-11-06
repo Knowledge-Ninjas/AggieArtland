@@ -3,31 +3,30 @@ class BlogController < ApplicationController
 def new
     #@user = User.find(params[:id])
 end
+
+def index
+    @blog_posts = BlogPost.all
+end
     
 
   def show
-    #@user = User.find(params[:id])
+    @blog_post = BlogPost.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to blog_index_path
   end
 
   def edit
-    #@user = User.find(params[:id])
+    
   end
 
   def update
     
-    #@user = User.find(params[:id])
-    #puts user_params
-    #if @user.update(user_params)
-    #  redirect_to profile_path, notice: 'Name updated successfully'
-    #else
-    #  render 'edit'
-    #end
+    
     
   end
   private
 
   def authenticate_user
-    # Implement your authentication logic here
     if session[:user_id]
       @current_user = User.find(session[:user_id])
     else

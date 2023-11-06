@@ -1,28 +1,30 @@
 require 'rails_helper'
 
 RSpec.describe BlogController, type: :controller do
-#   describe 'GET #index' do
-#     it 'assigns all users to @users' do
-#       user1 = FactoryBot.create(:user)
-#       user2 = FactoryBot.create(:user)
+    post1 = nil
+    post2 = nil
+    post3 = nil
+    before(:all) do
+        BlogPost.destroy_all
 
-#       get :index
-
-#       expect(assigns(:users)).to eq([user1, user2])
-#     end
-
-#     it 'renders the index template' do
-#       get :index
-
-#       expect(response).to render_template(:index)
-#     end
-#   end
-    describe 'GET #new' do
+        post1 = BlogPost.create( title: "post 1",
+                    body: "first!")
+        post2 = BlogPost.create( title: "idea",
+                    body: "what if we didn't")
+        post3 = BlogPost.create( title: "question",
+                    body: "where is this damn piece??")
+        
+    end
+    describe 'GET #index' do
     #let(:user) { FactoryBot.create(:user) }
 
       it 'shows the blog' do
-        get :new
-        expect(response).to render_template(:new)
+        get :index
+        expect(response).to render_template(:index)
+      end
+      it 'contains various blog posts' do
+        get :index
+        expect(assigns(:blog_posts)).to include(post1,post2,post3)
       end
     end
     
@@ -31,20 +33,20 @@ RSpec.describe BlogController, type: :controller do
     #let(:user) { FactoryBot.create(:user) }
     
     context 'if blog exists' do
-      before do
-        #session[:user_id] = user.id
-      end
-    
-      it 'shows blog post' do
-        get :show, params: { id: user.id }
+      it 'to show a blog post' do
+        get :show, params: { id: post1.id }
         expect(response).to render_template(:show)
+      end
+      it 'to show the right blog post' do
+        get :show, params: { id: post1.id }
+        expect(assigns(:blog_post)).to eq(post1)
       end
     end
     
     context 'if blog does not exist' do
       it 'redirects to the blog page' do
-        get :show, params: { id: user.id }
-        expect(response).to redirect_to(new_blog_path)
+        get :show, params: { id: 18248124 }
+        expect(response).to redirect_to(blog_index_path)
       end
     end
   end
