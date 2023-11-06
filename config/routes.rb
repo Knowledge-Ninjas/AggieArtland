@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   
   resources :art_pieces
   resources :profiles
+  resources :blog
   root :to => redirect('/login')
   get '/art_pieces/:id', to: 'art_pieces#show', as: 'show_art_piece'
   get '/users/:id', to: 'users#show', as: 'show_user'
