@@ -4,6 +4,11 @@
 
 <%= render @art_piece %>
 
+<p>Your location: LAT <%= session[:latitude] %> LON <%= session[:longitude] %></p>
+
+
+
+
 <div>
   <%= link_to "Check-in to this art piece", checkin_path(@art_piece) %>
   <% if current_user.is_admin? %>
