@@ -9,15 +9,15 @@ Given ('the following blog posts exist:') do |posts_table|
 end
 
 Then('I should be on the blog page') do ||
-    expect(page).to have_current_path(blog_index_path)
+    expect(page).to have_current_path(blogs_index_path)
 end
 
 Given('I am on the blog page') do ||
-    visit blog_index_path
+    visit blogs_index_path
 end
 
 Then('I should be on the create blog page') do ||
-    expect(page).to have_current_path(blog_create_path)
+    expect(page).to have_current_path(blogs_create_path)
 end
 
 When('I click blog post {string}') do |string|

@@ -1,0 +1,14 @@
+<h1>Blog Posts</h1>
+
+<%= link_to 'Create New Post', new_blog_path, class: 'btn btn-primary' %>
+
+<% @blog_posts.each do |blog_post| %>
+  <div class="blog-post">
+    <h2><%= link_to blog_post.title, blog_path(blog_post) %></h2>
+    <p><%= truncate(blog_post.body, length: 250) %></p>
+    <%= link_to 'Edit', edit_blog_path(blog_post), class: 'btn btn-edit' %> 
+    <%= button_to 'Delete', blog_path(blog_post), method: :delete %>
+  </div>
+<% end %>
+
+
