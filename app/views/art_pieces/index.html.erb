@@ -1,23 +1,27 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>List of Art Pieces</h1>
-<div id="art_pieces">
+<h4 class="container mt-4" >List of Art Pieces</h4>
+<div id="art_pieces" class="container mt-4" >
   <% @art_pieces.each do |art_piece| %>
+    <div class="card p-3 mb-3" style="background-color: #f5f5dc;">
+      <% if art_piece.has_icon? %>
+        <%= image_tag art_piece.icon_name, size: "100x100" %>
+      <% else %>
+        <%= image_tag "https://i.pinimg.com/originals/93/ae/51/93ae515eb75b21f3af334fd3888ee367.jpg", size: "100x100" %>
+      <% end %>
 
-    <% if art_piece.has_icon? %>
-      <%= image_tag art_piece.icon_name, size: "100x100" %>
-    <% else %>
-      <%= image_tag "https://i.pinimg.com/originals/93/ae/51/93ae515eb75b21f3af334fd3888ee367.jpg", size: "100x100" %>
-    <% end %>
+      <%= render art_piece %>
+      <%= link_to "Show this art piece", art_piece, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <% if current_user.is_admin? %>
+    <div style="margin-top: 10px;">
+      <div class="text-center">
+        <%= link_to "New art piece", new_art_piece_path, class: "btn btn-primary" %>
+      </div>
+    </div>
 
-    <%= render art_piece %>
-    <p>
-      <%= link_to "Show this art piece", art_piece %>
-    </p>
   <% end %>
 </div>
 <br>
 
-<% if current_user.is_admin? %>
-  <%= link_to "New art piece", new_art_piece_path %>
-<% end %>

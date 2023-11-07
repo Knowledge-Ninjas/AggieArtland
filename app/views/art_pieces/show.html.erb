@@ -1,17 +1,29 @@
 <p style="color: green"><%= notice %></p>
+<div class="container mt-4">
+  <%= image_tag @art_piece.get_icon_src, size: "100x100" %>
 
-<%= image_tag @art_piece.get_icon_src, size: "100x100" %>
+  <%= render @art_piece %>
 
-<%= render @art_piece %>
-
-<div>
-  <%= link_to "Check-in to this art piece", checkin_path(@art_piece) %>
-  <% if current_user.is_admin? %>
-    <%= link_to "Edit this art piece", edit_art_piece_path(@art_piece), id: "edit" %> |
-  <% end %>
-  <%= link_to "Back to art pieces", art_pieces_path %>
-
-  <% if current_user.is_admin? %>
-    <%= button_to "Destroy this art piece", @art_piece, method: :delete %>
-  <% end %>
+  <div>
+    <div class = "row">
+      <div class="row col-sm-6">
+        <div class="col-sm-6">
+          <%= link_to "Check-in to this art piece", checkin_path(@art_piece),class: "btn btn-primary" %>
+        </div>
+        <div class="col-sm-6">
+          <%= link_to "Back to art pieces", art_pieces_path,class: "btn btn-primary" %>
+        </div>
+      </div> 
+      <% if current_user.is_admin? %>
+        <div class="row col-sm-6">
+          <div class="col-sm-6">
+            <%= link_to "Edit this art piece", edit_art_piece_path(@art_piece), id: "edit",class: "btn btn-primary" %>
+          </div>
+          <div class="col-sm-6">
+            <%= button_to "Destroy this art piece", @art_piece, method: :delete, class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>      
 </div>
+

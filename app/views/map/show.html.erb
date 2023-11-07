@@ -1,15 +1,12 @@
 <!-- app/views/map/show.html.erb -->
-<h1>map</h1>
-
 <div data-controller="geolocation" data-action="geolocation#search">
 <%# <button data-action="geolocation#search">Find me</button> %>
 </div>
+<div class="container mt-4">
+  <h4>Map</h4>
+</div>
 
-<p>Your Latitude : <span id="lat"><%= @latitude %></span></p>
-<p>Your Longitude : <span id="long"><%= @longitude %></span></p>
-<p>Accuracy in 'm' : <span id="acc">0</span></p>
-
-<div id="map" style="height: 700px; width: 100%;"></div>
+<div id="map" style="height: 800px; width: 100%;" class="container mt-4"></div>
 
 <script>
   var artPieces = <%= raw @art_pieces.to_json %>;
@@ -23,5 +20,10 @@
 
 
 <script src="<%= asset_path 'map.js' %>"></script>
+<p style = "visibility: hidden; font-size:1px">Your Latitude : <span id="lat"><%= @latitude %></span></p>
+<p style = "visibility: hidden; font-size:1px">Your Longitude : <span id="long"><%= @longitude %></span></p>
+<p style = "visibility: hidden; font-size:1px">Accuracy in 'm' : <span id="acc">0</span></p>
+
+
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEzQSINw3YNC7yj7sxOiHcks8FKYXcwk0&callback=init"></script>
 
