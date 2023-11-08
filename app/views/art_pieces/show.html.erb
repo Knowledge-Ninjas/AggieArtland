@@ -4,7 +4,8 @@
 
 <%= render @art_piece %>
 
-<p>Your location: LAT <%= session[:latitude] %> LON <%= session[:longitude] %></p>
+<p>Your location: <%= @art_piece.format_location(session[:latitude].to_f, session[:longitude].to_f) %></p>
+<p>You are approximately <%= @art_piece.distance_to_pretty(session[:latitude].to_f, session[:longitude].to_f) %> away from this art piece.</p>
 
 
 
