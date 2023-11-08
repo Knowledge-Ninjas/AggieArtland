@@ -38,8 +38,9 @@ function initMap() {
       // Create a link to the art piece's show page
       var artPieceLink = '<a href="/art_pieces/' + artPiece.id + '">View Art Piece</a>';
       var art = '<img src="assets/art_piece_icon_' + artPiece.id + '.png" style="width: 100px; height: 100px;" />';
+      var checkinLink = '<a href="/art_pieces/checkin/' + artPiece.id + '">Check-in to Art Piece</a>';
       // Set the content of the info window with the art piece name and the link
-      infoWindow.setContent(art + '<br>' + "Art Piece: " + artPiece.name + '<br>' + artPieceLink);
+      infoWindow.setContent(art + '<br>' + "Art Piece: " + artPiece.name + '<br>' + artPieceLink + '<br>' + checkinLink);
       infoWindow.open(map, marker);
     });
   });

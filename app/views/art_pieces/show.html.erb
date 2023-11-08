@@ -4,6 +4,12 @@
 
 <%= render @art_piece %>
 
+<p>Your location: <%= @art_piece.format_location(session[:latitude].to_f, session[:longitude].to_f) %></p>
+<p>You are approximately <%= @art_piece.distance_to_pretty(session[:latitude].to_f, session[:longitude].to_f) %> away from this art piece.</p>
+
+
+
+
 <div>
   <%= link_to "Check-in to this art piece", checkin_path(@art_piece) %>
   <% if current_user.is_admin? %>
