@@ -2,6 +2,7 @@ class ArtPiece < ApplicationRecord
     validates_presence_of :name, :address
     geocoded_by :address
     after_validation :geocode, if: :address_changed?
+    validates_presence_of :geocode
 
     def has_icon?
         File.exist?(Rails.root.join('app', 'assets', 'images', icon_name))
