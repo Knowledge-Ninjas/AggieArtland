@@ -25,13 +25,18 @@
 
     <% if logged_in? %>
     <div class='container'>
-        <nav>
-            <ul>
-                <li><%= link_to "Map button",map_path%></li>
-                <li><%= link_to "Art Pieces",art_pieces_path%></li>
-                <li><%= link_to "Profile",show_user_path(current_user) %></li>
-                <li><%= link_to "Admin Panel",admin_panel_users_path if current_user.is_admin?%></li>
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="https://aggielandarttrail.com/"><img src=<%= image_path('logo.png')%> height="50" alt="Trails"></a>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link active" href=<%=map_path%>>Map</a>
+                <a class="nav-item nav-link active" href=<%=art_pieces_path%>>Art Pieces</a>
+                <a class="nav-item nav-link active" href=<%=show_user_path(current_user)%>>Profile</a>
+                <a class="nav-item nav-link active" href=<%=admin_panel_users_path%>><%= "Admin" if current_user.is_admin?%></a>
+            </div>
         </nav>
     </div>
     <% end%>
