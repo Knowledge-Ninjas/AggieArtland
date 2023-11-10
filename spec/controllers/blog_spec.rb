@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe BlogController, type: :controller do
+RSpec.describe BlogsController, type: :controller do
     post1 = nil
     post2 = nil
     post3 = nil
@@ -16,7 +16,6 @@ RSpec.describe BlogController, type: :controller do
         
     end
     describe 'GET #index' do
-    #let(:user) { FactoryBot.create(:user) }
 
       it 'shows the blog' do
         get :index
@@ -30,7 +29,6 @@ RSpec.describe BlogController, type: :controller do
     
 
   describe 'GET #show' do
-    #let(:user) { FactoryBot.create(:user) }
     
     context 'if blog exists' do
       it 'to show a blog post' do
@@ -46,9 +44,75 @@ RSpec.describe BlogController, type: :controller do
     context 'if blog does not exist' do
       it 'redirects to the blog page' do
         get :show, params: { id: 18248124 }
-        expect(response).to redirect_to(blog_index_path)
+        expect(response).to redirect_to(blogs_path)
       end
     end
   end
+
+    describe 'GET #new' do
+    let(:user) { FactoryBot.create(:user) }
+        
+        context 'when logged in' do
+            before do
+            session[:user_id] = user.id
+            end
+
+            it 'renders new' do
+                get :new
+                expect(response).to render_template(:new)
+            end
+        end
+        context 'when not logged in' do
+            it 'renders new' do
+                get :new
+                expect(response).to redirect_to(login_path)
+            end
+        end
+    end
+
+    describe 'POST #create' do
+    let(:user) { FactoryBot.create(:user) }
+        
+            before do
+            session[:user_id] = user.id
+            end
+
+            it 'redirects to blog post' do
+                post :create, params: { blog_post: { title: "idk", body: "example body" } }
+                expect(response).to redirect_to(blog_path(BlogPost.find_by(title:"idk",body:"example body").id))
+            end
+        
+    end
+
+    describe 'PATCH #update' do
+    let(:user) { FactoryBot.create(:user) }
+        
+            before do
+            session[:user_id] = user.id
+            get :show, params: { id: post3.id }
+            end
+
+            it 'redirects to blog post' do
+                put :update, params: { blog_post: { title: "nvm", body: "thanks!" } }
+                expect(response).to redirect_to(blog_path(BlogPost.find_by(title:"nvm",body:"thanks").id))
+            end
+    end
+
+    describe 'DELETE #destroy' do
+    let(:user) { FactoryBot.create(:user) }
+        
+            before do
+            session[:user_id] = user.id
+            end
+
+            it 'destroys blog' do
+                delete :destroy, params: { blog_post: post3 }
+                expect(BlogPost.all).not_to include(post3)
+            end
+
+            it 'redirects to blogs' do
+                expect(delete :destroy, params: { blog_post: post3 }).to redirect_to(blogs_path)
+            end
+    end
 
 end

@@ -9,15 +9,15 @@ Given ('the following blog posts exist:') do |posts_table|
 end
 
 Then('I should be on the blog page') do ||
-    expect(page).to have_current_path(blogs_index_path)
+    expect(page).to have_current_path(blogs_path)
 end
 
 Given('I am on the blog page') do ||
-    visit blogs_index_path
+    visit blogs_path
 end
 
 Then('I should be on the create blog page') do ||
-    expect(page).to have_current_path(blogs_create_path)
+    expect(page).to have_current_path(new_blog_path)
 end
 
 When('I click blog post {string}') do |string|
@@ -26,5 +26,14 @@ end
 
 Then('I should see blog post {string}') do |string|
     expect(page).to have_content(string)
+end
+
+
+Then('I should be on the blog edit page {string}') do |string|
+    expect(page). to have_current_path(edit_blog_path(BlogPost.find_by(title:string)))
+end
+
+When('I confirm deletion') do ||
+    Turbo.session.drive
 end
 

@@ -29,7 +29,7 @@ class BlogsController < ApplicationController
 
   def update
     if @blog_post.update(blog_post_params)
-      redirect_to @blog_post, notice: 'Blog post was successfully updated.'
+      redirect_to blog_path(@blog_post.id), notice: 'Blog post was successfully updated.'
     else
       render :edit
     end
@@ -45,6 +45,8 @@ class BlogsController < ApplicationController
 
   def set_blog_post
     @blog_post = BlogPost.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to blogs_path
   end
 
   def blog_post_params
