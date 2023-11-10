@@ -89,16 +89,22 @@ class ArtPiecesController < ApplicationController
     lon = session[:longitude].to_f
     dist_miles = art_piece.distance_to(lat, lon)
     dist_pretty = art_piece.distance_to_pretty(lat, lon)
+
+    flash_add = ""
     
     if user.has_stamp(art_piece)
-      flash[:notice] = "You've already checked in to art piece " + art_piece.name + '!'
+      flash_add = "You've already checked in to art piece " + art_piece.name + '!'
     elsif dist_miles > 0.094697 # 500 ft
-      flash[:notice] = "You need to be within 500 feet of the art piece to check in. You are currently " + dist_pretty + ' away.'
+      flash_add = "You need to be within 500 feet of the art piece to check in. You are currently " + dist_pretty + ' away.'
     else
-      flash[:notice] = 'Checked in to art piece ' + art_piece.name + '!'
+      flash_add = 'Checked in to art piece ' + art_piece.name + '!'
       user.set_stamp(art_piece, true)
     end
 
+    flash_add += Badge.check_all_badges(user)
+
+    flash[:notice] = flash_add
+    
     redirect_to show_art_piece_path(art_piece)
   end
 

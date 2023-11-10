@@ -65,6 +65,27 @@
               </div>
             </div>
           </div>
+
+          <div class="card mb-3">
+            <div class="card-body">
+              <h6>Badges</h6>
+              <div class="row">
+                <% @user.get_first_n_badges(5).each do |badge| %>
+                  <div class="col-4 mb-3 position-relative">
+                    <div class="position-relative" style="width: 100pt; height: 100pt; overflow: hidden;">
+                      <%= image_tag badge.get_icon, class: "img-fluid", style: "max-width: 100%; height: auto; max-height: 100%;" %>
+                    </div>
+                    <p class="text-center"><%= badge.name %></p>
+                  </div>
+                <% end %>
+              </div>
+              <div style="margin-top: 10px;">
+                <div class="text-center">
+                  <%= link_to "See all badges", badges_path(@user), class: "btn btn-primary" %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
