@@ -1,3 +1,6 @@
+//= require jquery
+//= require jquery_ujs
+
 function initMap() {
   var latitude = parseFloat(document.getElementById('lat').textContent);
   var longitude = parseFloat(document.getElementById('long').textContent);
@@ -48,9 +51,19 @@ function initMap() {
 
 function init() {
   navigator.geolocation.getCurrentPosition(function(position) {
+      console.log("navigator geolocation success");
+
       document.getElementById('lat').textContent = position.coords.latitude;
       document.getElementById('long').textContent = position.coords.longitude;
       document.getElementById('acc').textContent = position.coords.accuracy;
+
+      $.post("map/updateloc",{latitude: position.coords.latitude, longitude: position.coords.longitude, accuracy: position.coords.accuracy}, function(data, status){
+          // console.log("status: " + status);
+          // if(status == "success")
+          // {
+          //   alert(data);
+          // } 
+      });
 
       // Call the initMap function after getting the geolocation data
       initMap();
