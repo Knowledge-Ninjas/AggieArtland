@@ -13,8 +13,8 @@ class MapController < ApplicationController
         session[:longitude] = params[:longitude]
         session[:accuracy] = params[:accuracy]
 
-        respond_to do |format|
-            format.json { head :no_content }
-        end
+        # respond_to do |format|
+        #     format.json { head :no_content }
+        # end
     end 
 end

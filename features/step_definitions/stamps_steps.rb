@@ -17,6 +17,18 @@ Given("I go to the first art piece") do
     step %(I click the first "Show this art piece" link)
 end
 
+Given('my location is {string} {string}') do |string, string2|
+    visit "/map/updateloc", :post, :latitude => string, :longitude => string2, :accuracy => 12
+end
+
+Given('I am located at Zachry') do
+    visit "/dummyloc"
+end
+  
+Given('I go to the second art piece') do
+    visit "/art_pieces/2"
+end
+
 Then('I should not see {string}') do |text|
     expect(page).to_not have_content(text)
 end

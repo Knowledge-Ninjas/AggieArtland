@@ -31,7 +31,8 @@ Rails.application.routes.draw do
   post '/art_pieces/upload_icon/:id', to: 'art_pieces#upload_icon', as: 'upload_art_icon'
 
   post '/map/updateloc', to: 'map#updateloc', as: 'updateloc'
-
+  
   get '/art_pieces/checkin/:id', to: 'art_pieces#checkin', as: 'checkin'
+  get '/dummyloc', to: 'art_pieces#dummyloc', as: 'dummyloc'
 
 end

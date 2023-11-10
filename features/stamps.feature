@@ -11,51 +11,62 @@ Given the following users exist:
     | and123@yahoo.com  | password01      | Syd   |
     | pete@gmail.com    | idk1234         | Pete  |
 And the following art pieces exist:
-    | name       | address   |
-    | Piece A    | foobar    |
-    | Piece B    | foobar    |
-    | Piece C    | foobar    |
-    | Piece D    | foobar    |
+    | name       | address   | latitude    | longitude    |
+    | Zachry     | 125 Spence St, College Station, TX 77843 | 30.6214878  | -96.3403293  |
+    | Kleberg    | foobar    | 30.6108349  | -96.3476426  |
+    | Piece A    | foobar    | 30.6108349  | -96.3476426  |
+    | Piece B    | foobar    | 30.6108349  | -96.3476426  |
 
     Scenario: Stamps in profile
         Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
         And I am logged in with email "billybob@gmail.com" and password "bobbobbob"
         And I visit my profile
         Then I should see "Billy Bob"
-        And I should see "STAMPS"
+        And I should see "Stamps"
 
     Scenario: No Piece A stamp in profile by default
         Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
         And I am logged in with email "billybob@gmail.com" and password "bobbobbob"
         And I visit my profile
-        Then I should not see "Piece A"
+        Then I should not see "Zachry"
 
-    Scenario: Check in to art piece once
+    Scenario: Not in proximity to art piece when checking in
         Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
         And I am logged in with email "billybob@gmail.com" and password "bobbobbob"
+        And I am located at Zachry
+        And I go to the second art piece
+        And I click "Check-in to this art piece"
+        Then I should see "You need to be within"
+
+    Scenario: Check in to art piece once in proximity
+        Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
+        And I am logged in with email "billybob@gmail.com" and password "bobbobbob"
+        And I am located at Zachry
         And I go to the first art piece
         And I click "Check-in to this art piece"
-        Then I should see "Checked in to art piece Piece A!"
+        Then I should see "Checked in to art piece Zachry!"
 
     Scenario: Check in to art piece twice
         Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
         And I am logged in with email "billybob@gmail.com" and password "bobbobbob"
+        And I am located at Zachry
         And I go to the first art piece
         And I click "Check-in to this art piece"
         And I click "Check-in to this art piece"
-        And I should see "You've already checked in to art piece Piece A!"
+        And I should see "You've already checked in to art piece Zachry!"
 
     Scenario: No Piece A stamp in profile by default
         Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
         And I am logged in with email "billybob@gmail.com" and password "bobbobbob"
         And I visit my profile
-        Then I should not see "Piece A"
+        Then I should not see "Zachry"
 
     Scenario: Get stamp from art piece check-in
         Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
         And I am logged in with email "billybob@gmail.com" and password "bobbobbob"
+        And I am located at Zachry
         And I go to the first art piece
         And I click "Check-in to this art piece"
         And I visit my profile
-        Then I should see "Piece A"
+        Then I should see "Zachry"
 

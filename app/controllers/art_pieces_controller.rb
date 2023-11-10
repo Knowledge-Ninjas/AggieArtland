@@ -70,6 +70,15 @@ class ArtPiecesController < ApplicationController
     end
   end
 
+  def dummyloc
+    lat = "30.6214878"
+    lon = "-96.3403293"
+
+    session[:latitude] = lat
+    session[:longitude] = lon
+    redirect_to art_pieces_url
+  end
+
   def checkin
     art_piece = ArtPiece.find_by(id: params[:id])
 
