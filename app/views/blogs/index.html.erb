@@ -1,6 +1,9 @@
 <h1>News Feed</h1>
 
-<%= link_to 'Create New Post', new_blog_path, class: 'btn btn-primary' %>
+<% if current_user.is_admin? %>
+  <%= link_to 'Create New Post', new_blog_path, class: 'btn btn-primary' %>
+<% end %>
+
 <style>
   .news-feed-container {
     max-height: 400px; 
@@ -10,8 +13,6 @@
   }
 </style>
 
-
-
 <div class="news-feed-container">
   <% @blog_posts.each do |blog_post| %>
     <div class="blog-post">
@@ -20,7 +21,6 @@
     </div>
   <% end %>
 </div>
-
 
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" nonce="7FWZ49j6"></script>
