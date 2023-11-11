@@ -124,9 +124,9 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe 'badges and stamps' do
+  describe 'stamps' do
     let(:user) { FactoryBot.create(:user) }
-    let(:art_piece) { FactoryBot.create(:art_piece) }
+    let(:art_piece) { FactoryBot.create(:art_piece, address:"125 Spence St, College Station, TX 77843") }
     
     it 'has no stamps by default' do
       expect(user.get_earned_stamps().length()).to eq(0)
@@ -150,6 +150,47 @@ RSpec.describe UsersController, type: :controller do
     it 'retrieves art piece as stamped' do
       user.set_stamp(art_piece, true)
       expect(user.get_earned_stamps().include?(art_piece)).to eq(true)
+    end
+
+    it 'resets stamps' do
+      user.set_stamp(art_piece, true)
+      user.clear_stamps()
+      expect(user.get_earned_stamps().length()).to eq(0)
+    end
+  end
+
+  describe 'badges' do
+    let(:user) { FactoryBot.create(:user) }
+    let(:badge) { FactoryBot.create(:badge) }
+    
+    it 'has no badges by default' do
+      expect(user.get_earned_badges().length()).to eq(0)
+    end
+
+    it 'does not have badge' do
+      expect(user.has_badge(badge)).to eq(false)
+    end
+
+    it 'sets a badge' do
+      user.set_badge(badge, true)
+      expect(user.has_badge(badge)).to eq(true)
+    end
+
+    it 'unsets a badge' do
+      user.set_badge(badge, true)
+      user.set_badge(badge, false)
+      expect(user.has_badge(badge)).to eq(false)
+    end
+
+    it 'retrieves badge as completed' do
+      user.set_badge(badge, true)
+      expect(user.get_earned_badges().include?(badge)).to eq(true)
+    end
+
+    it 'resets badges' do
+      user.set_badge(badge, true)
+      user.clear_badges()
+      expect(user.get_earned_badges().length()).to eq(0)
     end
   end
 

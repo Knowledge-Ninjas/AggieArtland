@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<h4 class="container mt-4" >List of Badges</h4>
+<div id="badges" class="container mt-4" >
+  <% @badges.each do |badge| %>
+    <div class="card p-3 mb-3" style="background-color: #f5f5dc;">
+      <%= render badge %>
+      <%= link_to "Show this badge", badge, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <%= link_to "Clear my badges", clear_badges_path, class: "btn btn-primary" %>
+
+  <% if current_user.is_admin? %>
+    <div style="margin-top: 10px;">
+      <div class="text-center">
+        <%= link_to "New badge", new_badge_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<br>
+

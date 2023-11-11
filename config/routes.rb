@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   
   resources :art_pieces
   resources :profiles
+
+  resources :badges
+
   root :to => redirect('/login')
   get '/art_pieces/:id', to: 'art_pieces#show', as: 'show_art_piece'
   get '/users/:id', to: 'users#show', as: 'show_user'
@@ -21,6 +24,9 @@ Rails.application.routes.draw do
   post 'logout', to: 'sessions#destroy'
   get  'logout', to: 'sessions#destroy'
 
+  get '/clear_stamps', to: 'users#clear_stamps', as: 'clear_stamps'
+  get '/clear_badges', to: 'users#clear_badges', as: 'clear_badges'
+
 
   get "password/reset", to: "password_resets#new"
   post 'password/reset', to: 'password_resets#forgot'
@@ -31,7 +37,8 @@ Rails.application.routes.draw do
   post '/art_pieces/upload_icon/:id', to: 'art_pieces#upload_icon', as: 'upload_art_icon'
 
   post '/map/updateloc', to: 'map#updateloc', as: 'updateloc'
-
+  
   get '/art_pieces/checkin/:id', to: 'art_pieces#checkin', as: 'checkin'
+  get '/dummyloc', to: 'art_pieces#dummyloc', as: 'dummyloc'
 
 end

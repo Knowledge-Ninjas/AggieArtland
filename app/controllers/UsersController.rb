@@ -26,6 +26,18 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       render :stamps
     end
+
+    def clear_badges
+      current_user.clear_badges()
+      flash[:notice] = 'Badge collection reset successfully.'
+      redirect_to badges_path(current_user)
+    end
+
+    def clear_stamps
+      current_user.clear_stamps()
+      flash[:notice] = 'Stamp collection reset successfully.'
+      redirect_to stamps_path(current_user)
+    end
     
     def admin_panel
       @users = User.all
