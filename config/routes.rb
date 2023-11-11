@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   
   resources :art_pieces
   resources :profiles
+  resources :blogs
 
   resources :badges
 
