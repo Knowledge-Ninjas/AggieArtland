@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   post 'logout', to: 'sessions#destroy'
   get  'logout', to: 'sessions#destroy'
 
+  get '/clear_stamps', to: 'users#clear_stamps', as: 'clear_stamps'
+  get '/clear_badges', to: 'users#clear_badges', as: 'clear_badges'
+
 
   get "password/reset", to: "password_resets#new"
   post 'password/reset', to: 'password_resets#forgot'

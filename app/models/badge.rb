@@ -2,8 +2,7 @@ class Badge < ApplicationRecord
 
     def self.check_all_badges(user)
         flash = ""
-        puts 'BADGE CHECKING!'
-
+        
         Badge.all.each do |badge|
             if badge.will_complete(user)
                 flash += badge.handle_complete(user)
@@ -19,7 +18,7 @@ class Badge < ApplicationRecord
 
     def handle_complete(user)
         user.set_badge(self, true)
-        return "\nYou've earned the badge '" + self.name + "'!'"
+        return "\nYou've earned the badge '" + self.name + "'!"
     end
 
     def will_complete(user)

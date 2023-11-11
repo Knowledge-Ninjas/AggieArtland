@@ -8,6 +8,11 @@ Given('I visit my profile') do
     click_link("Profile")
 end
 
+Given('I visit my stamps') do
+    step %(I visit my profile)
+    click_link("See all stamps")
+end
+
 Given('I click the first {string} link') do |string|
     first(:link, string).click
 end

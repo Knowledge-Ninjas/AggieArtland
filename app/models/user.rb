@@ -57,5 +57,14 @@ class User < ApplicationRecord
     get_earned_badges.take(n)
   end
 
+  def clear_stamps()
+    self.stamps = 0
+    self.update_attribute(:stamps, self.stamps)
+  end
+  def clear_badges()
+    self.badges = 0
+    self.update_attribute(:badges, self.badges)
+  end
+
 
 end

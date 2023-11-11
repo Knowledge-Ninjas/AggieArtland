@@ -1,7 +1,7 @@
-Feature: Stamps and Badges
+Feature: Stamps
     As a user,
-    So that I can see a preview of my collected badges and stamps,
-    I want to see a row of my most recent badges and stamps in my profile.
+    So that I can see a preview of my collected stamps,
+    I want to see a row of my most recent stamps in my profile.
 
 Background: users in database
 Given the following users exist:
@@ -24,7 +24,7 @@ And the following art pieces exist:
         Then I should see "Billy Bob"
         And I should see "Stamps"
 
-    Scenario: No Piece A stamp in profile by default
+    Scenario: No Zachry stamp in profile by default
         Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
         And I am logged in with email "billybob@gmail.com" and password "bobbobbob"
         And I visit my profile
@@ -55,7 +55,7 @@ And the following art pieces exist:
         And I click "Check-in to this art piece"
         And I should see "You've already checked in to art piece Zachry!"
 
-    Scenario: No Piece A stamp in profile by default
+    Scenario: No Zachry stamp in profile by default
         Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
         And I am logged in with email "billybob@gmail.com" and password "bobbobbob"
         And I visit my profile
@@ -69,4 +69,15 @@ And the following art pieces exist:
         And I click "Check-in to this art piece"
         And I visit my profile
         Then I should see "Zachry"
+
+    Scenario: Reset stamps
+        Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
+        And I am logged in with email "billybob@gmail.com" and password "bobbobbob"
+        And I am located at Zachry
+        And I go to the first art piece
+        And I click "Check-in to this art piece"
+        And I visit my stamps
+        And I click "Clear my stamps"
+        And I visit my profile
+        Then I should not see "Zachry"
 

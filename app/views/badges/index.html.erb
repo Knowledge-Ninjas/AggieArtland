@@ -8,6 +8,8 @@
       <%= link_to "Show this badge", badge, class: "btn btn-primary" %>
     </div>
   <% end %>
+  <%= link_to "Clear my badges", clear_badges_path, class: "btn btn-primary" %>
+
   <% if current_user.is_admin? %>
     <div style="margin-top: 10px;">
       <div class="text-center">
