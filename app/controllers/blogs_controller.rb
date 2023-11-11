@@ -1,7 +1,7 @@
 # app/controllers/blogs_controller.rb
 class BlogsController < ApplicationController
   before_action :set_blog_post, only: %i[show edit update destroy]
-  before_action :authenticate_user, except: %i[index show]
+  before_action :authenticate_admin, except: %i[index show]
 
   def index
     @blog_posts = BlogPost.all
@@ -53,14 +53,13 @@ class BlogsController < ApplicationController
     params.require(:blog_post).permit(:title, :body)
   end
 
-
-
-  def authenticate_user
-    if session[:user_id]
+  def authenticate_admin
+    if session[:user_id] and User.find(session[:user_id]).is_admin?
       @current_user = User.find(session[:user_id])
     else
-      redirect_to login_path, alert: 'Please log in.'
+      redirect_to blogs_path, alert: 'Only admins can access this'
     end
   end
+
 end
 

@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/spec/controllers/blog_spec.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/spec/controllers/blog_spec.rb": {
         "lines": [
           1,
           null,
@@ -55,14 +55,9 @@
           null,
           null,
           1,
+          null,
+          1,
           2,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
           1,
           1,
           null,
@@ -70,27 +65,53 @@
           1,
           1,
           1,
-          1,
-          null,
-          null,
           null,
           null,
           1,
           2,
-          null,
           1,
           1,
-          null,
           null,
           1,
           1,
           1,
           null,
           null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          2,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
           null,
           null,
           1,
           2,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          2,
+          1,
+          1,
+          1,
+          null,
+          null,
           null,
           1,
           1,
@@ -98,32 +119,55 @@
           null,
           null,
           1,
+          2,
           1,
-          0,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
           null,
           null,
+          null,
+          null,
+          1,
+          1,
           null,
           1,
           3,
-          null,
           1,
+          2,
           2,
           null,
           null,
           1,
           1,
-          0,
+          1,
           null,
           null,
           1,
           1,
+          null,
+          null,
+          null,
+          1,
+          2,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
           null,
           null,
           null,
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/spec/rails_helper.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/spec/rails_helper.rb": {
         "lines": [
           null,
           1,
@@ -195,7 +239,7 @@
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/config/environment.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -204,7 +248,7 @@
           1
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/config/application.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/application.rb": {
         "lines": [
           1,
           null,
@@ -231,7 +275,7 @@
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/config/boot.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -239,7 +283,7 @@
           1
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/config/environments/test.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -309,7 +353,7 @@
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/config/initializers/assets.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -325,7 +369,7 @@
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/config/initializers/content_security_policy.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/initializers/content_security_policy.rb": {
         "lines": [
           null,
           null,
@@ -336,38 +380,6 @@
           null,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/config/initializers/filter_parameter_logging.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/config/initializers/inflections.rb": {
-        "lines": [
           null,
           null,
           null,
@@ -386,7 +398,39 @@
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/config/initializers/permissions_policy.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/initializers/filter_parameter_logging.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/initializers/inflections.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/initializers/permissions_policy.rb": {
         "lines": [
           null,
           null,
@@ -401,7 +445,7 @@
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/spec/factories/art_pieces.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/spec/factories/art_pieces.rb": {
         "lines": [
           1,
           null,
@@ -416,28 +460,28 @@
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/spec/factories/user.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/spec/factories/user.rb": {
         "lines": [
           1,
           null,
           1,
+          1,
+          5,
+          5,
+          5,
+          5,
+          null,
+          null,
           1,
           6,
           6,
           6,
           6,
           null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/config/routes.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/routes.rb": {
         "lines": [
           1,
           1,
@@ -477,7 +521,7 @@
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/app/helpers/application_helper.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/helpers/application_helper.rb": {
         "lines": [
           1,
           1,
@@ -490,25 +534,25 @@
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/app/helpers/art_pieces_helper.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/helpers/art_pieces_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/app/helpers/blog_helper.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/helpers/blog_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/app/helpers/profiles_helper.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/helpers/profiles_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/app/controllers/blogs_controller.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/controllers/blogs_controller.rb": {
         "lines": [
           null,
           1,
@@ -520,7 +564,7 @@
           null,
           null,
           1,
-          3,
+          7,
           null,
           null,
           1,
@@ -540,64 +584,63 @@
           null,
           null,
           1,
-          0,
-          0,
+          1,
+          1,
           null,
           0,
           null,
           null,
           null,
           1,
-          0,
-          0,
-          0,
+          2,
+          2,
+          2,
           null,
           null,
           1,
           null,
           1,
+          11,
+          null,
+          1,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          9,
+          5,
+          null,
           4,
           null,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          1,
-          3,
-          2,
-          null,
-          1,
           null,
           null,
           null,
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/app/controllers/application_controller.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/app/models/blog_post.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/models/blog_post.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/app/models/application_record.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/hectorcardenas/Documents/i4Blog/AggieArtland/app/models/user.rb": {
+      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -606,12 +649,12 @@
           1,
           null,
           1,
-          7,
-          7,
+          23,
+          23,
           null,
           null,
           1,
-          0,
+          9,
           null,
           null,
           1,
@@ -639,6 +682,6 @@
         ]
       }
     },
-    "timestamp": 1699442744
+    "timestamp": 1699664605
   }
 }

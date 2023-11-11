@@ -37,3 +37,11 @@ When('I confirm deletion') do ||
     Turbo.session.drive
 end
 
+Given('I am logged in as an admin') do ||
+    @test_user = FactoryBot.create(:admin_user)
+    visit login_path
+    fill_in 'Email', with: @test_user.email
+    fill_in 'Password', with: @test_user.password
+    click_button 'Log in'
+end
+

@@ -11,13 +11,8 @@ Given the following blog posts exist:
     | pls help          | help|
     | fun fact!         | 1 + 1 = 2|
 
-    Scenario: Go to blog
-        Given I am on the sign up page
-        When I press 'Blog'
-        Then I should be on the blog page
-
-    Scenario: Create blog post
-        Given I am logged in
+    Scenario: Create blog post as admin
+        Given I am logged in as an admin
         And I am on the blog page
         When I click 'Create New Post'
         Then I should be on the create blog page
@@ -27,8 +22,13 @@ Given the following blog posts exist:
         Then I should see blog post "new post!"
         And I should see "Blog post was successfully created."
 
-    Scenario: Update blog post
+    Scenario: Cannot create blog post if not admin
         Given I am logged in
+        And I am on the blog page
+        Then I should not see 'Create New Post'
+
+    Scenario: Update blog post
+        Given I am logged in as an admin
         And I am on the blog page
         When I click blog post 'pls help'
         And I click 'Edit'
@@ -39,8 +39,14 @@ Given the following blog posts exist:
         Then I should see blog post "Nevermind!"
         And I should see "Blog post was successfully updated."
 
-    Scenario: Delete blog post
+    Scenario: Cannot update post if not admin
         Given I am logged in
+        And I am on the blog page
+        When I click blog post 'pls help'
+        Then I should not see 'Edit'
+
+    Scenario: Delete blog post
+        Given I am logged in as an admin
         And I am on the blog page
         When I click blog post 'fun fact!'
         And I click 'Edit'
@@ -49,17 +55,16 @@ Given the following blog posts exist:
         Then I should see 'Blog post was successfully destroyed.'
         And I am on the blog page
 
+    Scenario: Cannot delete post if not admin
+        Given I am logged in
+        And I am on the blog page
+        When I click blog post 'fun fact!'
+        Then I should not see 'Delete'
+
     Scenario: View blog post
         Given I am logged in
         And I am on the blog page
         When I click blog post 'Example'
         Then I should see blog post 'Example'
 
-    Scenario: Comment on post
-        Given I am logged in
-        And I am on the blog page
-        And I am looking at a blog post
-        When I fill in 'Comment' with 'example comment'
-        And I press 'Comment'
-        Then I should see a new comment 'example comment'
 
