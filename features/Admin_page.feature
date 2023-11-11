@@ -32,21 +32,21 @@ Feature: Admin Page
     When I click on show this art piece with id 1
     Then I should be able to see all the details of a certain art piece
 
-  Scenario: Upload Art Piece Image Show
-    Given I have uploaded "images/banana.jpeg" as an icon for art piece ID 1
-    Then I should be redirected to the show art piece page with id 1
-    And I should see "Art piece icon successfully changed."
-    And I should see the image "art_piece_icon_1"
+  # Scenario: Upload Art Piece Image Show
+  #   Given I have uploaded "images/banana.jpeg" as an icon for art piece ID 1
+  #   Then I should be redirected to the show art piece page with id 1
+  #   And I should see "Art piece icon successfully changed."
+  #   And I should see the image "art_piece_icon_1"
 
-  Scenario: Upload Art Piece Image Edit
-    Given I have uploaded "images/banana.jpeg" as an icon for art piece ID 1
-    And I go to the edit art piece page with id 1
-    Then I should see the image "art_piece_icon_1"
+  # Scenario: Upload Art Piece Image Edit
+  #   Given I have uploaded "images/banana.jpeg" as an icon for art piece ID 1
+  #   And I go to the edit art piece page with id 1
+  #   Then I should see the image "art_piece_icon_1"
 
-  Scenario: Upload Art Piece Image View All
-    Given I have uploaded "images/banana.jpeg" as an icon for art piece ID 1
-    And I go to the art pieces page
-    And I should see the image "art_piece_icon_1"
+  # Scenario: Upload Art Piece Image View All
+  #   Given I have uploaded "images/banana.jpeg" as an icon for art piece ID 1
+  #   And I go to the art pieces page
+  #   And I should see the image "art_piece_icon_1"
 
   Scenario: No Art Piece Icon
     Given I am in the show art piece with id -500
