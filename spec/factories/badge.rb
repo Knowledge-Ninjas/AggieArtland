@@ -1,11 +1,11 @@
 require 'faker'
 
 FactoryBot.define do
-    factory :art_piece do
+    factory :badge do
         sequence(:id) { |n| n } 
         name { Faker::Lorem.word }
         description { Faker::Lorem.sentence }
-        address { "400 Spence St, College Station, TX 77843" }
-        artist { Faker::Artist.name }
+        badge_type { "stamps" }
+        requirement { Faker::Number.digit.to_s }
     end
 end

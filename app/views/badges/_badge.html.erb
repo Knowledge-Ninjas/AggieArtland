@@ -9,12 +9,19 @@
   }
 </style>
 
-<div id="<%= dom_id art_piece %>"  class="main-body">
+<div id="<%= dom_id badge %>"  class="main-body">
   <div class="row gutters-gx">
     <div class="card m-3 p-3">
       <div class = "card-body">
+
+        <div class="col-4 mb-3 position-relative">
+          <div class="position-relative" style="width: 100pt; height: 100pt; overflow: hidden;">
+            <%= image_tag badge.get_icon, class: "img-fluid", style: "max-width: 100%; height: auto; max-height: 100%;" %>
+          </div>
+        </div>
+
         <div class = "heading">
-          <p><%= art_piece.name %></p>    
+          <p><%= badge.name %></p>    
         </div>
         <div>
           <div class="row mb-3">
@@ -22,45 +29,35 @@
             <h6 class="mb-0">Description:</h6>
             </div>
             <div class="col-sm-10 text-secondary">
-              <%= art_piece.description %>
+              <%= badge.description %>
             </div>
           </div>
+
           <div class="row mb-3">
             <div class="col-sm-2">
-            <h6 class="mb-0">Address:</h6>
+            <h6 class="mb-0">Progress:</h6>
             </div>
             <div class="col-sm-10 text-secondary">
-              <%= art_piece.address %>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-sm-2">
-            <h6 class="mb-0">Artist:</h6>
-            </div>
-            <div class="col-sm-10 text-secondary">
-              <%= art_piece.artist %>
+              <%= badge.get_progress(current_user) %>
             </div>
           </div>
 
           <% if current_user.is_admin? %>
             <div class="row mb-3">
               <div class="col-sm-2">
-              <h6 class="mb-0">Latitude:</h6>
+              <h6 class="mb-0">Type:</h6>
               </div>
               <div class="col-sm-10 text-secondary">
-                <%= art_piece.latitude %>
+                <%= badge.badge_type %>
               </div>
             </div>
             <div class="row mb-3">
               <div class="col-sm-2">
-              <h6 class="mb-0">Longitude:</h6>
+              <h6 class="mb-0">Requirement:</h6>
               </div>
               <div class="col-sm-10 text-secondary">
-                <%= art_piece.longitude %>
+                <%= badge.requirement %>
               </div>
-            </div>  
-            <div class = "image">
-              <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/pin-s+ff0000(#{art_piece.longitude},#{art_piece.latitude})/#{art_piece.longitude},#{art_piece.latitude},12,0/300x200?access_token=pk.eyJ1IjoiYXNod2lucmFqYTk0MSIsImEiOiJjbG10YWRidWswMms3Mm1vNTMzMHRsbzVsIn0.MnG54GXT7gRMTYIr2hfogA"%>
             </div>          
           <%end%> 
         </div>

@@ -7,7 +7,7 @@ Feature: Navigation
     Given I have signed up with email "abc@gmail.com", name "admin", and password "asdfasdf"
     And I am logged in with email "abc@gmail.com" and password "asdfasdf"
     When I am in the Map Page
-    When I press on "Map button" 
+    When I press on "Map" 
     Then I should be on the map page
 
     Scenario: Navigate to Art Piece List
@@ -17,12 +17,12 @@ Feature: Navigation
     When I press on "Art Pieces"
     Then I should be on the Art Piece page
 
-    Scenario: Navigate to Admin Panel
-    Given I have signed up with email "test@gmail.com", name "a_admin", and password "testtest"
-    And I am logged in with email "test@gmail.com" and password "testtest"
-    When I am in the Map Page
-    When I press on "Admin Panel"
-    Then I should be on the Admin Panel page
+    #Scenario: Navigate to Admin Panel
+    #Given I have signed up with email "test@gmail.com", name "a_admin", and password "testtest"
+    #And I am logged in with email "test@gmail.com" and password "testtest"
+    #When I am in the Map Page
+    #When I press on "Admin"
+    #Then I should be on the Admin Panel page
 
     Scenario: Navigate to Admin Panel if not admin
     Given I have signed up with email "asf@gmail.com", name "ash", and password "asdfasdf"

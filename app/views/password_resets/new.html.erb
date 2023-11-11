@@ -1,9 +1,15 @@
-<%= content_tag :h1, "Forgot Password" %>
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div class="card p-4" style="background-color: #f5f5dc; font-family: 'HelveticaNeue','Helvetica Neue',Helvetica,Arial,sans-serif; padding: 20px; margin-bottom: 15px;">
+    <h4 style="text-align: center">Forgot Password </h4>
+    <%= form_with url: password_reset_path do |form| %>
+      <div class="form-group">
+        <%= form.label :email %>
+        <%= form.email_field :email, autofocus: true, class: "form-control", style: "width: 100%; margin-top: 15px;" %>
+      </div>
 
-
-<%= form_with url: password_reset_path do |form| %>
-  <%= form.label :email %>
-  <%= form.email_field :email, autofocus: true %>
-
-  <%= form.submit "Reset Password" %>
-<% end %>
+      <div class="form-group text-center">
+        <%= form.submit "Reset Password", class: "btn btn-primary rounded-pill", style: "width: 100%; margin-top: 15px;" %>
+      </div>
+    <% end %>
+  </div>
+</div>
