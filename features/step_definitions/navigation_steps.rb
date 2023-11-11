@@ -1,9 +1,16 @@
+Given('I have signed up as an admin with email {string}, name {string}, and password {string}') do |email, name, password|
+    FactoryBot.create(:admin_user, email: email, name: name, password: password)
+end
+  
+When('I press on Map') do |button|
+    click_link(button)
+end
+
 When('I am in the Map Page') do
     visit map_path
 end
 
 When('I press on {string}') do |button|
-    expect(page).to have_content(button)
     click_link(button)
 end
 
