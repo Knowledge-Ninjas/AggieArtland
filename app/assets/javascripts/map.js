@@ -1,3 +1,6 @@
+//= require jquery
+//= require jquery_ujs
+
 function initMap() {
   var latitude = parseFloat(document.getElementById('lat').textContent);
   var longitude = parseFloat(document.getElementById('long').textContent);
@@ -36,25 +39,40 @@ function initMap() {
         img.onerror = function() {
           setInfoWindowContent(defaultImageUrl, artPiece, marker);
         };
+  
         img.src = artImageUrl;
       });
+
     });
   }
 
   function setInfoWindowContent(imageUrl, artPiece, marker) {
     var artPieceImage = '<img src="' + imageUrl + '" style="width: 100px; height: 100px;" />';
     var artPieceLink = '<a href="/art_pieces/' + artPiece.id + '">View Art Piece</a>';
-    infoWindow.setContent(artPieceImage + '<br>' + "Art Piece: " + artPiece.name + '<br>' + artPieceLink);
+    var checkinLink = '<a href="/art_pieces/checkin/' + artPiece.id + '">Check-in to Art Piece</a>';
+    infoWindow.setContent(artPieceImage + '<br>' + "Art Piece: " + artPiece.name + '<br>' + artPieceLink + '<br>' + checkinLink);
     infoWindow.open(map, marker);
   }
 }
 
 function init() {
   navigator.geolocation.getCurrentPosition(function(position) {
-    document.getElementById('lat').textContent = position.coords.latitude;
-    document.getElementById('long').textContent = position.coords.longitude;
-    document.getElementById('acc').textContent = position.coords.accuracy;
-    initMap();
+      console.log("navigator geolocation success");
+
+      document.getElementById('lat').textContent = position.coords.latitude;
+      document.getElementById('long').textContent = position.coords.longitude;
+      document.getElementById('acc').textContent = position.coords.accuracy;
+
+      $.post("map/updateloc",{latitude: position.coords.latitude, longitude: position.coords.longitude, accuracy: position.coords.accuracy}, function(data, status){
+          // console.log("status: " + status);
+          // if(status == "success")
+          // {
+          //   alert(data);
+          // } 
+      });
+
+      // Call the initMap function after getting the geolocation data
+      initMap();
   }, function(error) {
     console.error("Geolocation failed: ", error);
   });

@@ -47,6 +47,13 @@ gem 'bcrypt', '~> 3.1.7'
 # image processing
 gem "mini_magick"
 
+
+#Bootstrap
+gem 'bootstrap', '~> 5.1'
+
+#SCSS for stylesheets
+gem 'sass-rails'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -93,3 +100,5 @@ gem "geocoder", "~> 1.8"
 gem 'jasmine', '3.1.0'
 
 gem 'jasmine-jquery-rails'
+
+gem 'jquery-rails', '~> 4.4'

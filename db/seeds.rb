@@ -23,3 +23,28 @@ User.create!(
     name: 'Admin User',
     user_type: 'admin'
   )
+
+if !Badge.exists?(:name => 'First stamp!')
+  Badge.create!(
+    name: 'First stamp!',
+    description: 'Check-in to an art piece and get your first stamp!',
+    badge_type: 'stamps',
+    requirement: '1'
+  )
+end
+if !Badge.exists?(:name => 'Oh baby a triple')
+  Badge.create!(
+    name: 'Oh baby a triple',
+    description: 'Collect three stamps!',
+    badge_type: 'stamps',
+    requirement: '3'
+  )
+end
+if !Badge.exists?(:name => 'Four score')
+Badge.create!(
+  name: 'Four score',
+  description: 'Collect four stamps!',
+  badge_type: 'stamps',
+  requirement: '4'
+)
+end

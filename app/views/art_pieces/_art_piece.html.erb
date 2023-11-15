@@ -9,42 +9,62 @@
   }
 </style>
 
-<div id="<%= dom_id art_piece %>">
-  <div class = "heading">
-    <p>
-      <%= art_piece.name %>
-    </p>    
+<div id="<%= dom_id art_piece %>"  class="main-body">
+  <div class="row gutters-gx">
+    <div class="card m-3 p-3">
+      <div class = "card-body">
+        <div class = "heading">
+          <p><%= art_piece.name %></p>    
+        </div>
+        <div>
+          <div class="row mb-3">
+            <div class="col-sm-2">
+            <h6 class="mb-0">Description:</h6>
+            </div>
+            <div class="col-sm-10 text-secondary">
+              <%= art_piece.description %>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-2">
+            <h6 class="mb-0">Address:</h6>
+            </div>
+            <div class="col-sm-10 text-secondary">
+              <%= art_piece.address %>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-2">
+            <h6 class="mb-0">Artist:</h6>
+            </div>
+            <div class="col-sm-10 text-secondary">
+              <%= art_piece.artist %>
+            </div>
+          </div>
+
+          <% if current_user.is_admin? %>
+            <div class="row mb-3">
+              <div class="col-sm-2">
+              <h6 class="mb-0">Latitude:</h6>
+              </div>
+              <div class="col-sm-10 text-secondary">
+                <%= art_piece.latitude %>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-2">
+              <h6 class="mb-0">Longitude:</h6>
+              </div>
+              <div class="col-sm-10 text-secondary">
+                <%= art_piece.longitude %>
+              </div>
+            </div>  
+            <div class = "image">
+              <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/pin-s+ff0000(#{art_piece.longitude},#{art_piece.latitude})/#{art_piece.longitude},#{art_piece.latitude},12,0/300x200?access_token=pk.eyJ1IjoiYXNod2lucmFqYTk0MSIsImEiOiJjbG10YWRidWswMms3Mm1vNTMzMHRsbzVsIn0.MnG54GXT7gRMTYIr2hfogA"%>
+            </div>          
+          <%end%> 
+        </div>
+      </div>
+    </div>
   </div>
-  <div class = "image">
-    <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/pin-s+ff0000(#{art_piece.longitude},#{art_piece.latitude})/#{art_piece.longitude},#{art_piece.latitude},12,0/300x200?access_token=pk.eyJ1IjoiYXNod2lucmFqYTk0MSIsImEiOiJjbG10YWRidWswMms3Mm1vNTMzMHRsbzVsIn0.MnG54GXT7gRMTYIr2hfogA"%>
-  </div>
-  <div>
-    <p>
-      <strong>Description:</strong>
-      <%= art_piece.description %>
-    </p>
-
-    <p>
-      <strong>Address:</strong>
-      <%= art_piece.address %>
-    </p>
-
-    <p>
-      <strong>Artist:</strong>
-      <%= art_piece.artist %>
-    </p>
-
-    <p>
-      <strong>Latitude:</strong>
-      <%= art_piece.latitude %>
-    </p>
-
-    <p>
-      <strong>Longitude:</strong>
-      <%= art_piece.longitude %>
-    </p>
-
-  </div>
-
-
 </div>

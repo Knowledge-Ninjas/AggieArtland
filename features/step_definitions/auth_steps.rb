@@ -32,8 +32,14 @@ When('I click {string}') do |link|
 end
 
 Then('I should be on the user page') do
-    visit "/users/1"
+    user = User.find_by(email: 'billybob@gmail.com')
+  visit "/users/#{user.id}"
 end
+
+Then('I should see on the user page') do
+    expect(page).to have_content("Welcome, billybob@gmail.com!")
+end
+  
 
 Then('I should see {string}') do |text|
     expect(page).to have_content(text)

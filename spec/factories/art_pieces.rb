@@ -5,7 +5,7 @@ FactoryBot.define do
         sequence(:id) { |n| n } 
         name { Faker::Lorem.word }
         description { Faker::Lorem.sentence }
-        address { Faker::Address.full_address }
+        address { "400 Spence St, College Station, TX 77843" }
         artist { Faker::Artist.name }
     end
 end
