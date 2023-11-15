@@ -15,7 +15,7 @@ function initMap() {
     position: {lat: latitude, lng: longitude},
     map: map,
     title: 'Your Location',
-    icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+    icon: '/assets/red-dot.png'
   });
 
   // Assuming you have the artPieces data available as an array of objects
@@ -30,7 +30,7 @@ function initMap() {
       position: {lat: artPiece.latitude, lng: artPiece.longitude},
       map: map,
       title: artPiece.name,
-      icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+      icon: '/assets/blue-dot.png'
     });
 
     // Add click event listener for the marker
