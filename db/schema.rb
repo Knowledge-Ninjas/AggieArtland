@@ -13,7 +13,7 @@
 ActiveRecord::Schema[7.0].define(version: 2023_11_10_213904) do
   create_table "art_pieces", force: :cascade do |t|
     t.string "name"
-    t.text "description"
+    t.string "description"
     t.string "address"
     t.float "latitude"
     t.float "longitude"

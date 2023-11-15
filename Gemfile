@@ -49,7 +49,7 @@ gem "mini_magick"
 
 
 #Bootstrap
-gem 'bootstrap'
+gem 'bootstrap', '~> 5.1'
 
 #SCSS for stylesheets
 gem 'sass-rails'
@@ -101,6 +101,4 @@ gem 'jasmine', '3.1.0'
 
 gem 'jasmine-jquery-rails'
 
-gem 'jquery-rails'
-
-gem 'sass-rails'
+gem 'jquery-rails', '~> 4.4'
