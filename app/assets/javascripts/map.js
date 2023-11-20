@@ -14,7 +14,7 @@ function initMap() {
     position: {lat: latitude, lng: longitude},
     map: map,
     title: 'Your Location',
-    icon: '/assets/red-dot.png'
+    icon: 'https://aggie-art-public.s3.us-east-2.amazonaws.com/red-dot.png'
   });
 
   if (typeof artPieces !== 'undefined' && Array.isArray(artPieces)) {
@@ -25,12 +25,12 @@ function initMap() {
         position: {lat: artPiece.latitude, lng: artPiece.longitude},
         map: map,
         title: artPiece.name,
-        icon: '/assets/blue-dot.png'
+        icon: 'https://aggie-art-public.s3.us-east-2.amazonaws.com/blue-dot.png'
       });
 
       marker.addListener('click', function () {
         var artImageUrl = '/assets/art_piece_icon_' + artPiece.id + '.png';
-        var defaultImageUrl = '/assets/default_art.png';
+        var defaultImageUrl = 'https://aggie-art-public.s3.us-east-2.amazonaws.com/default_art.png';
 
         var img = new Image();
         img.onload = function() {
