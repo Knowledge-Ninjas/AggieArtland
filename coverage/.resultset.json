@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/spec/controllers/art_piece_spec.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/spec/controllers/art_piece_spec.rb": {
         "lines": [
           1,
           null,
@@ -173,7 +173,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/spec/rails_helper.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/spec/rails_helper.rb": {
         "lines": [
           null,
           1,
@@ -245,7 +245,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/config/environment.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -254,7 +254,7 @@
           1
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/config/application.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/config/application.rb": {
         "lines": [
           1,
           null,
@@ -281,7 +281,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/config/boot.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -291,7 +291,7 @@
           1
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/config/environments/test.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -361,7 +361,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/config/initializers/assets.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -377,7 +377,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/config/initializers/content_security_policy.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/config/initializers/content_security_policy.rb": {
         "lines": [
           null,
           null,
@@ -406,7 +406,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/config/initializers/filter_parameter_logging.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -418,7 +418,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/config/initializers/inflections.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/config/initializers/inflections.rb": {
         "lines": [
           null,
           null,
@@ -438,7 +438,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/config/initializers/permissions_policy.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/config/initializers/permissions_policy.rb": {
         "lines": [
           null,
           null,
@@ -453,7 +453,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/spec/factories/art_pieces.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/spec/factories/art_pieces.rb": {
         "lines": [
           1,
           null,
@@ -468,7 +468,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/spec/factories/badge.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/spec/factories/badge.rb": {
         "lines": [
           1,
           null,
@@ -483,7 +483,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/spec/factories/user.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/spec/factories/user.rb": {
         "lines": [
           1,
           null,
@@ -504,7 +504,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/config/routes.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/config/routes.rb": {
         "lines": [
           1,
           1,
@@ -553,7 +553,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/helpers/application_helper.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/helpers/application_helper.rb": {
         "lines": [
           1,
           1,
@@ -566,25 +566,25 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/helpers/art_pieces_helper.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/helpers/art_pieces_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/helpers/blog_helper.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/helpers/blog_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/helpers/profiles_helper.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/helpers/profiles_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/controllers/art_pieces_controller.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/controllers/art_pieces_controller.rb": {
         "lines": [
           1,
           1,
@@ -732,13 +732,13 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/controllers/application_controller.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/spec/controllers/blog_spec.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/spec/controllers/blog_spec.rb": {
         "lines": [
           1,
           null,
@@ -904,7 +904,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/controllers/blogs_controller.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/controllers/blogs_controller.rb": {
         "lines": [
           null,
           1,
@@ -973,7 +973,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/spec/controllers/map_spec.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/spec/controllers/map_spec.rb": {
         "lines": [
           1,
           null,
@@ -999,7 +999,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/controllers/map_controller.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/controllers/map_controller.rb": {
         "lines": [
           1,
           1,
@@ -1023,7 +1023,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/spec/controllers/profile_spec.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/spec/controllers/profile_spec.rb": {
         "lines": [
           1,
           null,
@@ -1121,7 +1121,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/controllers/profiles_controller.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/controllers/profiles_controller.rb": {
         "lines": [
           1,
           1,
@@ -1161,7 +1161,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/spec/controllers/reset_password_spec.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/spec/controllers/reset_password_spec.rb": {
         "lines": [
           1,
           null,
@@ -1206,7 +1206,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/controllers/password_resets_controller.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/controllers/password_resets_controller.rb": {
         "lines": [
           1,
           1,
@@ -1248,7 +1248,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/spec/controllers/user_spec.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/spec/controllers/user_spec.rb": {
         "lines": [
           1,
           null,
@@ -1449,7 +1449,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/controllers/UsersController.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/controllers/UsersController.rb": {
         "lines": [
           1,
           1,
@@ -1541,7 +1541,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/spec/models/art_piece_spec.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/spec/models/art_piece_spec.rb": {
         "lines": [
           1,
           null,
@@ -1587,7 +1587,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/models/art_piece.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/models/art_piece.rb": {
         "lines": [
           1,
           1,
@@ -1664,14 +1664,14 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/models/application_record.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/models/user.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -1745,13 +1745,13 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/models/blog_post.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/models/blog_post.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/mailers/user_mailer.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/mailers/user_mailer.rb": {
         "lines": [
           1,
           1,
@@ -1765,7 +1765,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/mailers/application_mailer.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/mailers/application_mailer.rb": {
         "lines": [
           1,
           1,
@@ -1773,7 +1773,7 @@
           null
         ]
       },
-      "D:/TAMU/SEM 1/Software engineering/AggieArtland/app/models/badge.rb": {
+      "/Users/shubhammhaske/tamu/SE/AggieArtland/app/models/badge.rb": {
         "lines": [
           1,
           null,
@@ -1836,6 +1836,6 @@
         ]
       }
     },
-    "timestamp": 1700407207
+    "timestamp": 1700498612
   }
 }

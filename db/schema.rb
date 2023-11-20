@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_19_153926) do
 
   create_table "art_pieces", force: :cascade do |t|
     t.string "name"
-    t.string "description"
+    t.text "description"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
@@ -69,26 +69,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_19_153926) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "locations", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["latitude"], name: "index_locations_on_latitude"
-    t.index ["longitude"], name: "index_locations_on_longitude"
-  end
-
-  create_table "user_stamps", force: :cascade do |t|
-    t.integer "users_id"
-    t.integer "art_pieces_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["art_pieces_id"], name: "index_user_stamps_on_art_pieces_id"
-    t.index ["users_id"], name: "index_user_stamps_on_users_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -104,6 +84,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_19_153926) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "user_stamps", "art_pieces", column: "art_pieces_id", on_delete: :cascade
-  add_foreign_key "user_stamps", "users", column: "users_id", on_delete: :cascade
 end
